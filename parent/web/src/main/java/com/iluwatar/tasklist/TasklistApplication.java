@@ -2,6 +2,7 @@ package com.iluwatar.tasklist;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -27,6 +28,14 @@ public class TasklistApplication extends WebApplication
 	{
 		super.init();
 
-		// add your configuration here
+        SpringComponentInjector spring = newInjector();
+		getComponentInstantiationListeners().add(spring);
+		getBehaviorInstantiationListeners().add(spring);
+		spring.inject(this);
 	}
+	
+	protected SpringComponentInjector newInjector() {
+	    return new SpringComponentInjector(this);
+	}
+	
 }

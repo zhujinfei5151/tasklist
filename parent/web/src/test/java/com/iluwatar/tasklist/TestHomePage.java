@@ -1,5 +1,7 @@
 package com.iluwatar.tasklist;
 
+import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
+import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +16,14 @@ public class TestHomePage
 	@Before
 	public void setUp()
 	{
-		tester = new WicketTester(new TasklistApplication());
+        final ApplicationContextMock ctx = new ApplicationContextMock();
+		TasklistApplication app = new TasklistApplication() {
+            @Override
+            protected SpringComponentInjector newInjector() {
+                return new SpringComponentInjector(this, ctx);
+            }
+		};
+		tester = new WicketTester(app);
 	}
 
 	@Test
