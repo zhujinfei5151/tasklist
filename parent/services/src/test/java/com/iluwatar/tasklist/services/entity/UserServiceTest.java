@@ -2,9 +2,11 @@ package com.iluwatar.tasklist.services.entity;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,12 +23,23 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 
 	@Autowired
 	UserService userService;
+
+	@Before
+    public void runSql() {
+        final String filename = "file:src/test/sql/userservice.sql";
+        Resource resource = applicationContext.getResource(filename);
+        if (resource.exists()) {
+            executeSqlScript(filename, false);
+        } else {
+            throw new RuntimeException(filename + " not found");
+        }
+    }
 	
 	@Test
 	public void testPersistUser() {
 		
 		int count = userService.findAll().size();
-		assertEquals(count, 0);
+		assertEquals(0, count);
 		
 		User u = new User();
 		u.setUsername("jaska");

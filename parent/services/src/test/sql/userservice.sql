@@ -22,5 +22,3 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 delete from `task`;
 delete from `user`;
-
-insert into `user` (id, passwordHash, username) values (1, "abcdef", "matti");

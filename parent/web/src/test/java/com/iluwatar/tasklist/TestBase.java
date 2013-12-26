@@ -4,19 +4,29 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
-import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
-/**
- * Simple test using the WicketTester
- */
-public class TestHomePage
-{
-	private WicketTester tester;
+import com.iluwatar.tasklist.services.service.UserService;
+import com.iluwatar.tasklist.services.service.UserTaskService;
+import com.iluwatar.tasklist.web.TasklistApplication;
 
+public class TestBase {
+
+	protected WicketTester tester;
+	
+//	@Mock
+//	UserService userService;
+//
+//	@Mock
+//	UserTaskService userTaskService;
+	
 	@Before
 	public void setUp()
 	{
         final ApplicationContextMock ctx = new ApplicationContextMock();
+        ctx.putBean(Mockito.mock(UserService.class));
+        ctx.putBean(Mockito.mock(UserTaskService.class));
 		TasklistApplication app = new TasklistApplication() {
             @Override
             protected SpringComponentInjector newInjector() {
@@ -25,14 +35,5 @@ public class TestHomePage
 		};
 		tester = new WicketTester(app);
 	}
-
-	@Test
-	public void homepageRendersSuccessfully()
-	{
-		//start and render the test page
-		tester.startPage(FrontPage.class);
-
-		//assert rendered page class
-		tester.assertRenderedPage(FrontPage.class);
-	}
+	
 }

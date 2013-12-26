@@ -1,4 +1,4 @@
-package com.iluwatar.tasklist;
+package com.iluwatar.tasklist.web;
 
 import org.apache.wicket.Session;
 import org.apache.wicket.core.request.ClientInfo;

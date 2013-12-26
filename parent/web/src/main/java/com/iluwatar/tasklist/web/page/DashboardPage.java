@@ -1,4 +1,4 @@
-package com.iluwatar.tasklist;
+package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.markup.html.WebPage;
 

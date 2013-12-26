@@ -1,4 +1,4 @@
-package com.iluwatar.tasklist;
+package com.iluwatar.tasklist.web;
 
 import java.util.Collection;
 
@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.iluwatar.tasklist.services.entity.User;
 import com.iluwatar.tasklist.services.service.UserService;
+import com.iluwatar.tasklist.web.page.FrontPage;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -61,12 +62,11 @@ public class TasklistApplication extends WebApplication
 		
 		Collection<User> users = userService.findAll();
 		logger.info("user count={}", users.size());
-		if (users.size() <= 0) {
-			throw new RuntimeException("no users in database");
+		if (users.size() > 0) {
+			User user = users.iterator().next();
+			session.setUser(user);
+			logger.info("user={}", user.getUsername());
 		}
-		User user = users.iterator().next();
-		session.setUser(user);
-		logger.info("user={}", user.getUsername());
 
 		return session;
 	}
