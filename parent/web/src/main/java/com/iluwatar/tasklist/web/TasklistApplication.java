@@ -3,6 +3,8 @@ package com.iluwatar.tasklist.web;
 import java.util.Collection;
 
 import org.apache.wicket.Session;
+import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
+import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
@@ -21,7 +23,7 @@ import com.iluwatar.tasklist.web.page.FrontPage;
  * 
  * @see com.iluwatar.tasklist.Start#main(String[])
  */
-public class TasklistApplication extends WebApplication
+public class TasklistApplication extends AuthenticatedWebApplication
 {    	
 	
 	final static Logger logger = LoggerFactory.getLogger(TasklistApplication.class);
@@ -69,6 +71,16 @@ public class TasklistApplication extends WebApplication
 		}
 
 		return session;
+	}
+
+	@Override
+	protected Class<? extends WebPage> getSignInPageClass() {
+		return FrontPage.class;
+	}
+
+	@Override
+	protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
+		return TasklistSession.class;
 	}
 	
 }

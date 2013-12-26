@@ -1,12 +1,13 @@
 package com.iluwatar.tasklist.web;
 
 import org.apache.wicket.Session;
-import org.apache.wicket.core.request.ClientInfo;
+import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
+import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.request.Request;
 
 import com.iluwatar.tasklist.services.entity.User;
 
-public class TasklistSession extends Session {
+public class TasklistSession extends AuthenticatedWebSession {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -15,11 +16,6 @@ public class TasklistSession extends Session {
 
 	public TasklistSession(Request request) {
 		super(request);
-	}
-
-	@Override
-	public ClientInfo getClientInfo() {
-		return clientInfo;
 	}
 
 	public User getUser() {
@@ -32,6 +28,27 @@ public class TasklistSession extends Session {
 	
 	public static TasklistSession get() {
 		return (TasklistSession) Session.get();
+	}
+
+	@Override
+	public boolean authenticate(String username, String password) {
+		// TODO: real implementation
+		if (username.equals("abc") && password.equals("123")) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public Roles getRoles() {
+		// TODO: real implementation
+		Roles roles = new Roles();
+		if (isSignedIn()) {
+			roles.add("USER");
+		}
+		return roles;
 	}
 
 }
