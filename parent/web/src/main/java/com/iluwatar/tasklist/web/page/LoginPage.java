@@ -1,7 +1,6 @@
 package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
@@ -13,10 +12,10 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 // 1. create user
 // 2. login -> move to dashboard page
 // 3. lost password
-public class FrontPage extends WebPage {
+public class LoginPage extends BasePage {
 	private static final long serialVersionUID = 1L;
 
-	public FrontPage(final PageParameters parameters) {
+	public LoginPage(final PageParameters parameters) {
 		super(parameters);
 		
 		final LoginForm form = new LoginForm("loginForm");

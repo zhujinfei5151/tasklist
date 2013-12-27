@@ -10,7 +10,11 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.iluwatar.tasklist.web.page.FrontPage;
+import com.iluwatar.tasklist.web.page.DashboardPage;
+import com.iluwatar.tasklist.web.page.LoginPage;
+
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -28,7 +32,7 @@ public class TasklistApplication extends AuthenticatedWebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-		return FrontPage.class;
+		return DashboardPage.class;
 	}
 
 	/**
@@ -43,6 +47,8 @@ public class TasklistApplication extends AuthenticatedWebApplication
 		getComponentInstantiationListeners().add(spring);
 		getBehaviorInstantiationListeners().add(spring);
 		spring.inject(this);
+		
+		Bootstrap.install(this, new BootstrapSettings());
 	}
 	
 	protected SpringComponentInjector newInjector() {
@@ -57,7 +63,7 @@ public class TasklistApplication extends AuthenticatedWebApplication
 
 	@Override
 	protected Class<? extends WebPage> getSignInPageClass() {
-		return FrontPage.class;
+		return LoginPage.class;
 	}
 
 	@Override

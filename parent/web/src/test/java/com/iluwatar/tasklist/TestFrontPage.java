@@ -2,7 +2,7 @@ package com.iluwatar.tasklist;
 
 import org.junit.Test;
 
-import com.iluwatar.tasklist.web.page.FrontPage;
+import com.iluwatar.tasklist.web.page.LoginPage;
 
 public class TestFrontPage extends TestBase
 {
@@ -11,10 +11,10 @@ public class TestFrontPage extends TestBase
 	public void pageRendersSuccessfully()
 	{
 		//start and render the test page
-		tester.startPage(FrontPage.class);
+		tester.startPage(LoginPage.class);
 
 		//assert rendered page class
-		tester.assertRenderedPage(FrontPage.class);
+		tester.assertRenderedPage(LoginPage.class);
 	}
 	
 }
