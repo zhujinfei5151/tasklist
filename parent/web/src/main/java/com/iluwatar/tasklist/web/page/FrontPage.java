@@ -46,17 +46,11 @@ public class FrontPage extends WebPage {
 	    protected void onSubmit() {
 	        AuthenticatedWebSession session = AuthenticatedWebSession.get();
 	        if (session.signIn(username, password)) {
-	        	success("logged in");
+	        	setResponsePage(DashboardPage.class);
 	        } else {
 	        	error("login.failed.badcredentials");
 	        }
 	    }
-	 
-//	    private void setDefaultResponsePageIfNecessary() {
-//	        if (!continueToOriginalDestination()) {
-//	        setResponsePage(getApplication().getHomePage());
-//	        }
-//	    }
 
 	}	
 }

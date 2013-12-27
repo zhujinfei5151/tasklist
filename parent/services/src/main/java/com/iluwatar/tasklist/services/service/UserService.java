@@ -16,4 +16,6 @@ public interface UserService {
 	
 	User getUser(int userId);
 	
+	boolean loginUser(String username, String passwordHash);
+	
 }

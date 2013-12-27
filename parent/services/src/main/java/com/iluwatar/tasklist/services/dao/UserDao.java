@@ -15,5 +15,7 @@ public interface UserDao {
 	Collection<User> findAll();
 	
 	User getUser(int userId);
+
+	boolean loginUser(String username, String passwordHash);
 	
 }

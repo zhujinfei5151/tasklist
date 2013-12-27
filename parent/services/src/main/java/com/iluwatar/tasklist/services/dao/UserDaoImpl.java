@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -49,6 +50,20 @@ public class UserDaoImpl implements UserDao {
 		userQuery.setParameter("userId", userId);
 		User u = (User) userQuery.getSingleResult();
 		return u;
+	}
+
+	public boolean loginUser(String username, String passwordHash) {
+		Query userQuery = em.createQuery("select u from User u where u.username=:username and u.passwordHash=:passwordHash");
+		userQuery.setParameter("username", username);
+		userQuery.setParameter("passwordHash", passwordHash);
+		try {
+			User u = (User) userQuery.getSingleResult();
+		}
+		catch (NoResultException e) {
+			return false;
+		}
+		return true;
+
 	}
 
 }
