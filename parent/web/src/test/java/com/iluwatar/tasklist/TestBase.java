@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import com.iluwatar.tasklist.services.service.TaskService;
 import com.iluwatar.tasklist.services.service.UserService;
-import com.iluwatar.tasklist.services.service.UserTaskService;
 import com.iluwatar.tasklist.web.TasklistApplication;
 
 public class TestBase {
@@ -20,7 +20,7 @@ public class TestBase {
 	{
         final ApplicationContextMock ctx = new ApplicationContextMock();
         ctx.putBean(Mockito.mock(UserService.class));
-        ctx.putBean(Mockito.mock(UserTaskService.class));
+        ctx.putBean(Mockito.mock(TaskService.class));
 		TasklistApplication app = new TasklistApplication() {
             @Override
             protected SpringComponentInjector newInjector() {
