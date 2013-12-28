@@ -11,6 +11,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.iluwatar.tasklist.services.entity.User;
 import com.iluwatar.tasklist.services.service.UserService;
 
 public class TasklistSession extends AuthenticatedWebSession {
@@ -19,8 +20,10 @@ public class TasklistSession extends AuthenticatedWebSession {
 
 	final static Logger logger = LoggerFactory.getLogger(TasklistSession.class);
 	
+	private User user;
+	
 	@SpringBean
-	UserService userService;
+	private UserService userService;
 	
 	public TasklistSession(Request request) {
 		super(request);
@@ -38,6 +41,7 @@ public class TasklistSession extends AuthenticatedWebSession {
 		logger.info("hash={}", hash);
 		
 		if (userService.loginUser(username, hash)) {
+			user = userService.getUserByUsername(username);
 			return true;
 		}
 		else {
@@ -56,6 +60,7 @@ public class TasklistSession extends AuthenticatedWebSession {
 	}
 	
 	private String MD5(String md5) {
+		// TODO: rewrite
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			byte[] array = md.digest(md5.getBytes());
@@ -69,6 +74,14 @@ public class TasklistSession extends AuthenticatedWebSession {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}	
 
 }

@@ -46,4 +46,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.loginUser(username, passwordHash);
 	}
 
+	@Transactional
+	public User getUserByUsername(String username) {
+		return userDao.getUserByUsername(username);
+	}
+
 }

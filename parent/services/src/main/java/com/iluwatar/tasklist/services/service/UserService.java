@@ -15,6 +15,8 @@ public interface UserService {
 	Collection<User> findAll();
 	
 	User getUser(int userId);
+
+	User getUserByUsername(String username);
 	
 	boolean loginUser(String username, String passwordHash);
 	

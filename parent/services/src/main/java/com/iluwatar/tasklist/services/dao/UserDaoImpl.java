@@ -66,4 +66,16 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
+	public User getUserByUsername(String username) {
+		Query userQuery = em.createQuery("select u from User u where u.username=:username");
+		userQuery.setParameter("username", username);
+		try {
+			User u = (User) userQuery.getSingleResult();
+			return u;
+		}
+		catch (NoResultException e) {
+			return null;
+		}
+	}
+
 }

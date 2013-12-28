@@ -15,12 +15,6 @@ public class TestBase {
 
 	protected WicketTester tester;
 	
-//	@Mock
-//	UserService userService;
-//
-//	@Mock
-//	UserTaskService userTaskService;
-	
 	@Before
 	public void setUp()
 	{
