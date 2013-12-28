@@ -35,11 +35,11 @@ public class DashboardPage extends WebPage {
 			protected void onPopulate() {
 				super.onPopulate();
 				
-				final Collection<Task> tasks = userTaskService.findAll(1);
-				
-				for (Task t: tasks) {
-					add(new Label(newChildId(), t.getDescription()));
-				}
+//				final Collection<Task> tasks = userTaskService.findAll(1);
+//				
+//				for (Task t: tasks) {
+//					add(new Label(newChildId(), t.getDescription()));
+//				}
 				
 			}
 			

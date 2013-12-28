@@ -22,10 +22,10 @@ public class UserTaskServiceImpl implements UserTaskService {
 		return userTaskDao.findAll(userId);
 	}
 
-	@Transactional
-	public void addTask(int userId, Task task) {
-		userTaskDao.addTask(userId, task);
-	}
+//	@Transactional
+//	public void addTask(int userId, Task task) {
+//		userTaskDao.addTask(userId, task);
+//	}
 
 	@Transactional
 	public void clearTasks(int userId) {

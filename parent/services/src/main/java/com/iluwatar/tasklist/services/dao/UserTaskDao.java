@@ -8,7 +8,7 @@ public interface UserTaskDao {
 	
 	public Collection<Task> findAll(int userId);
 	
-	public void addTask(int userId, Task task);
+//	public void addTask(int userId, Task task);
 	
 	public void clearTasks(int userId);
 

@@ -1,6 +1,7 @@
 package com.iluwatar.tasklist.services.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -22,9 +23,13 @@ public class Task implements Serializable {
 	
 	private boolean done;
 	
+	private Date date;
+	
+	private int orderNum;
+	
 	@ManyToOne
 	@JoinColumn(nullable=false)
-	private User user;
+	private Tasklist tasklist;
 	
 	public Task() {
 	}
@@ -53,12 +58,20 @@ public class Task implements Serializable {
 		this.done = done;
 	}
 
-	public User getUser() {
-		return user;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
 	}
 	
 }

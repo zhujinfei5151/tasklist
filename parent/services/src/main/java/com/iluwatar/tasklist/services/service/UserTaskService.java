@@ -8,7 +8,7 @@ public interface UserTaskService {
 	
 	Collection<Task> findAll(int userId);
 	
-	void addTask(int userId, Task task);
+//	void addTask(int userId, Task task);
 	
 	void clearTasks(int userId);
 

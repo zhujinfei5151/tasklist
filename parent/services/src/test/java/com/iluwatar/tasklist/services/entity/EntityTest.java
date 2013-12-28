@@ -12,22 +12,22 @@ public class EntityTest {
 		emf = Persistence.createEntityManagerFactory("tasklistPU");
 	}
 
-	public void createTask(Task task) {
-		EntityManager em = emf.createEntityManager();
-		
-		try {
-			em.getTransaction().begin();
-			em.persist(task);
-			em.getTransaction().commit();
-		}
-		catch (Throwable t) {
-			t.printStackTrace();
-			em.getTransaction().rollback();
-		}
-		finally {
-			em.close();
-		}
-	}
+//	public void createTask(Task task) {
+//		EntityManager em = emf.createEntityManager();
+//		
+//		try {
+//			em.getTransaction().begin();
+//			em.persist(task);
+//			em.getTransaction().commit();
+//		}
+//		catch (Throwable t) {
+//			t.printStackTrace();
+//			em.getTransaction().rollback();
+//		}
+//		finally {
+//			em.close();
+//		}
+//	}
 
 	public void createUser(User user) {
 		EntityManager em = emf.createEntityManager();
@@ -63,11 +63,11 @@ public class EntityTest {
 			u.setPasswordHash("235gdsGDGw3ga342");
 			test.createUser(u);
 			
-			Task t = new Task();
-			t.setDescription("do this and that");
-			t.setDone(false);
-			t.setUser(u);
-			test.createTask(t);
+//			Task t = new Task();
+//			t.setDescription("do this and that");
+//			t.setDone(false);
+//			t.setUser(u);
+//			test.createTask(t);
 			
 			test.close();
 		}

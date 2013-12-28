@@ -26,7 +26,7 @@ public class User implements Serializable {
 	private String passwordHash;
 	
 	@OneToMany(mappedBy="user", orphanRemoval=true)
-	private Set<Task> tasks;
+	private Set<Tasklist> tasklists;
 	
 	public User() {
 	}
@@ -51,12 +51,12 @@ public class User implements Serializable {
 		this.passwordHash = passwordHash;
 	}
    
-	public Set<Task> getTasks() {
-		return tasks;
+	public Set<Tasklist> getTasklists() {
+		return tasklists;
 	}
 
-	public void setTasks(Set<Task> tasks) {
-		this.tasks = tasks;
+	public void setTasklists(Set<Tasklist> tasklists) {
+		this.tasklists = tasklists;
 	}
 	
 }

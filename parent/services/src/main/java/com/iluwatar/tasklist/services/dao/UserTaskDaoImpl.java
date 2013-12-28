@@ -23,11 +23,11 @@ public class UserTaskDaoImpl implements UserTaskDao {
 		return q.getResultList();  
 	}
 
-	public void addTask(int userId, Task task) {
-		User user = em.find(User.class, userId);
-		task.setUser(user);
-		em.persist(task);
-	}
+//	public void addTask(int userId, Task task) {
+//		User user = em.find(User.class, userId);
+//		task.setUser(user);
+//		em.persist(task);
+//	}
 
 	public void clearTasks(int userId) {
 		Query q = em.createQuery("delete from Task t where t.user.id=:userId");
