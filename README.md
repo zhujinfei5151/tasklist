@@ -3,4 +3,4 @@ tasklist
 
 tasklist web application
 
-technology stack: wicket, spring, hibernate, mysql
+technology stack: bootstrap, wicket, spring, hibernate, mysql
