@@ -23,19 +23,14 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public void removeUser(int userId) {
-		Query taskQuery = em.createQuery("delete from Task t where t.user.id=:userId");
-		taskQuery.setParameter("userId", userId);
-		taskQuery.executeUpdate();
-		Query userQuery = em.createQuery("delete from User u where u.id=:userId");
-		userQuery.setParameter("userId", userId);
-		userQuery.executeUpdate();
+		em.remove(this.getUser(userId));
 	}
 
 	public void clearUsers() {
 		Query q = em.createQuery("select u from User u");
 		List<User> users = q.getResultList();
 		for (User u: users) {
-			removeUser(u.getId());
+			em.remove(u);
 		}
 	}
 
@@ -82,6 +77,10 @@ public class UserDaoImpl implements UserDao {
 		catch (NoResultException e) {
 			return null;
 		}
+	}
+
+	public void updateUser(User user) {
+		em.persist(user);
 	}
 
 }

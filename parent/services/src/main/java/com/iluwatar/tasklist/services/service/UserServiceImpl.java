@@ -51,4 +51,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByUsername(username);
 	}
 
+	public void updateUser(User user) {
+		userDao.updateUser(user);
+	}
+
 }

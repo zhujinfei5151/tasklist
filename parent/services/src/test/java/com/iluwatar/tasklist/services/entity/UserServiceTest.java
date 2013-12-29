@@ -1,6 +1,6 @@
 package com.iluwatar.tasklist.services.entity;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,16 +32,60 @@ public class UserServiceTest extends BaseServiceTest {
 	public void testPersistUser() {
 		
 		int count = userService.findAll().size();
-		assertEquals(0, count);
+		assertEquals(count,0);
 		
 		User u = new User();
 		u.setUsername("jaska");
 		u.setPasswordHash("adfasf3345345sdfasg435345");
 		userService.addUser(u);
 
-		int count2 = userService.findAll().size();
-		assertEquals(count2, 1);
+		count = userService.findAll().size();
+		assertEquals(count, 1);
 		
+	}
+
+	@Test
+	public void testRemoveUser() {
+        final String filename = "file:src/test/sql/insertuser.sql";
+        runSql(filename);
+
+		int count = userService.findAll().size();
+		assertEquals(count, 1);
+        
+		userService.removeUser(1);
+		count = userService.findAll().size();
+		assertEquals(count, 0);
+	}
+	
+	@Test
+	public void testUpdateUser() {
+		
+        final String filename = "file:src/test/sql/insertuser.sql";
+        runSql(filename);
+
+		int count = userService.findAll().size();
+		assertEquals(count, 1);
+
+		User user = userService.getUser(1);
+		assertNotNull(user);
+		assertEquals(user.getUsername(), "matti");
+		
+		user.setUsername("pekka");
+		userService.updateUser(user);
+		
+		User updatedUser = userService.getUser(1);
+		assertEquals(updatedUser.getUsername(), "pekka");
+		
+	}
+
+	@Test
+	public void testGetUser() {
+
+        final String filename = "file:src/test/sql/insertuser.sql";
+        runSql(filename);
+
+        User user = userService.getUser(1);
+        assertNotNull(user);
 	}
 	
 }
