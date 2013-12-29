@@ -9,5 +9,8 @@ public interface TaskService {
 	Collection<Tasklist> getUserTasklists(int userId);
 	
 	Tasklist getTasklist(int tasklistId);
+	
+	void addTasklist(int userId, Tasklist tasklist);
 
+	void removeTasklist(int tasklistId);
 }

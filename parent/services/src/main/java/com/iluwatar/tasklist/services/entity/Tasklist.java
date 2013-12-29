@@ -45,5 +45,21 @@ public class Tasklist implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
 	
 }

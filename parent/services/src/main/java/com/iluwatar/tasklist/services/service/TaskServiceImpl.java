@@ -26,4 +26,14 @@ public class TaskServiceImpl implements TaskService {
 		return tasklistDao.getTasklist(tasklistId);
 	}
 
+	@Transactional
+	public void addTasklist(int userId, Tasklist tasklist) {
+		tasklistDao.addTasklist(userId, tasklist);
+	}
+
+	@Transactional
+	public void removeTasklist(int tasklistId) {
+		tasklistDao.removeTasklist(tasklistId);
+	}
+
 }

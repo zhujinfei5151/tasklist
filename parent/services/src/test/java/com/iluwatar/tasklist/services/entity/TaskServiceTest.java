@@ -1,12 +1,15 @@
 package com.iluwatar.tasklist.services.entity;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Collection;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +21,7 @@ import com.iluwatar.tasklist.services.service.UserService;
 @ContextConfiguration(locations = { "file:src/test/resources/test-context.xml" })
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-public class TaskServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class TaskServiceTest extends BaseServiceTest {
 
 	@Autowired
 	TaskService taskService;
@@ -26,33 +29,25 @@ public class TaskServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	UserService userService;
 	
 	@Before
-    public void runSql() {
+    public void setup() {
         final String filename = "file:src/test/sql/taskservice.sql";
-        Resource resource = applicationContext.getResource(filename);
-        if (resource.exists()) {
-            executeSqlScript(filename, false);
-        } else {
-            throw new RuntimeException(filename + " not found");
-        }
+        runSql(filename);
     }
 	
 	@Test
-	public void testPersistTask() {
-	
-//		Collection<Task> tasks = userTaskService.findAll(1);
-//		assertEquals(tasks.size(), 0);
-//
-//		User user = userService.getUser(1);
-//		
-//		Task newTask = new Task();
-//		newTask.setDescription("let us do this");
-//		newTask.setDone(true);
-//		newTask.setUser(user);
-//		
-//		userTaskService.addTask(1, newTask);
-//		Collection<Task> newTasks = userTaskService.findAll(1);
-//		assertEquals(newTasks.size(), 1);
+	public void testPersistTasklist() {
+
+		User user = userService.getUser(1);
+		assertNotNull(user);
 		
+		Collection<Tasklist> tasklists = taskService.getUserTasklists(1);
+		assertEquals(tasklists.size(), 0);
+		
+		Tasklist tl = new Tasklist();
+		tl.setName("foobar");
+		taskService.addTasklist(user.getId(), tl);
+		tasklists = taskService.getUserTasklists(user.getId());
+		assertEquals(tasklists.size(), 1);
 	}
 	
 }

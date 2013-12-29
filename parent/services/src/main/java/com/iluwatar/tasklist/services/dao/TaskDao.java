@@ -10,4 +10,7 @@ public interface TaskDao {
 	
 	Tasklist getTasklist(int tasklistId);
 	
+	void addTasklist(int userId, Tasklist tasklist);
+
+	void removeTasklist(int tasklistId);
 }

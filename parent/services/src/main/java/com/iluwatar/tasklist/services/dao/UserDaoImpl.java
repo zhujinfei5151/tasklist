@@ -48,8 +48,14 @@ public class UserDaoImpl implements UserDao {
 	public User getUser(int userId) {
 		Query userQuery = em.createQuery("select u from User u where u.id=:userId");
 		userQuery.setParameter("userId", userId);
-		User u = (User) userQuery.getSingleResult();
-		return u;
+		try {
+			User u = (User) userQuery.getSingleResult();
+			return u;
+		}
+		catch (NoResultException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public boolean loginUser(String username, String passwordHash) {

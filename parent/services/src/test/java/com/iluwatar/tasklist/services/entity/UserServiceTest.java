@@ -1,14 +1,12 @@
 package com.iluwatar.tasklist.services.entity;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,20 +17,15 @@ import com.iluwatar.tasklist.services.service.UserService;
 @ContextConfiguration(locations = { "file:src/test/resources/test-context.xml" })
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class UserServiceTest extends BaseServiceTest {
 
 	@Autowired
 	UserService userService;
 
 	@Before
-    public void runSql() {
+    public void setup() {
         final String filename = "file:src/test/sql/userservice.sql";
-        Resource resource = applicationContext.getResource(filename);
-        if (resource.exists()) {
-            executeSqlScript(filename, false);
-        } else {
-            throw new RuntimeException(filename + " not found");
-        }
+        runSql(filename);
     }
 	
 	@Test
