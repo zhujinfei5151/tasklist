@@ -31,13 +31,15 @@ public class TaskServiceTest extends BaseServiceTest {
 	
 	@Before
     public void setup() {
-        final String filename = "file:src/test/sql/taskservice.sql";
+        final String filename = "classpath:createtables.sql";
         runSql(filename);
+        final String filename2 = "classpath:insertuser.sql";
+        runSql(filename2);
     }
 
 	@Test
 	public void testGetTasklist() {
-		final String filename = "file:src/test/sql/inserttasklist.sql";
+		final String filename = "classpath:inserttasklist.sql";
 		runSql(filename);
 		
 		Tasklist tasklist = taskService.getTasklist(1);
@@ -64,7 +66,7 @@ public class TaskServiceTest extends BaseServiceTest {
 	@Test
 	public void testRemoveTasklist() {
 		
-		final String filename = "file:src/test/sql/inserttasklist.sql";
+		final String filename = "classpath:inserttasklist.sql";
 		runSql(filename);
 
 		Collection<Tasklist> tasklists = taskService.getUserTasklists(1);
@@ -79,7 +81,7 @@ public class TaskServiceTest extends BaseServiceTest {
 	@Test
 	public void testUpdateTasklist() {
 		
-		final String filename = "file:src/test/sql/inserttasklist.sql";
+		final String filename = "classpath:inserttasklist.sql";
 		runSql(filename);
 		
 		Tasklist tasklist = taskService.getTasklist(1);
@@ -94,9 +96,9 @@ public class TaskServiceTest extends BaseServiceTest {
 
 	@Test
 	public void testGetTask() {
-		final String filename = "file:src/test/sql/inserttasklist.sql";
+		final String filename = "classpath:inserttasklist.sql";
 		runSql(filename);
-		final String filename2 = "file:src/test/sql/inserttask.sql";
+		final String filename2 = "classpath:inserttask.sql";
 		runSql(filename2);
 		
 		Task task = taskService.getTask(1);
@@ -106,7 +108,7 @@ public class TaskServiceTest extends BaseServiceTest {
 	@Test
 	public void testPersistTask() {
 		
-		final String filename = "file:src/test/sql/inserttasklist.sql";
+		final String filename = "classpath:inserttasklist.sql";
 		runSql(filename);
 		
 		Collection<Task> tasks = taskService.getTasklistTasks(1);
@@ -127,9 +129,9 @@ public class TaskServiceTest extends BaseServiceTest {
 	@Test
 	public void testRemoveTask() {
 
-		final String filename = "file:src/test/sql/inserttasklist.sql";
+		final String filename = "classpath:inserttasklist.sql";
 		runSql(filename);
-		final String filename2 = "file:src/test/sql/inserttask.sql";
+		final String filename2 = "classpath:inserttask.sql";
 		runSql(filename2);
 
 		Collection<Task> tasks = taskService.getTasklistTasks(1);
@@ -142,9 +144,9 @@ public class TaskServiceTest extends BaseServiceTest {
 	
 	@Test
 	public void testUpdateTask() {
-		final String filename = "file:src/test/sql/inserttasklist.sql";
+		final String filename = "classpath:inserttasklist.sql";
 		runSql(filename);
-		final String filename2 = "file:src/test/sql/inserttask.sql";
+		final String filename2 = "classpath:inserttask.sql";
 		runSql(filename2);
 		
 		Task task = taskService.getTask(1);

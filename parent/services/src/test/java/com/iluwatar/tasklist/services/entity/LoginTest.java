@@ -24,8 +24,10 @@ public class LoginTest extends BaseServiceTest {
 
 	@Before
     public void runSql() {
-        final String filename = "file:src/test/sql/login.sql";
+        final String filename = "classpath:createtables.sql";
         runSql(filename);
+        final String filename2 = "classpath:insertuser.sql";
+        runSql(filename2);
     }
 	
 	@Test

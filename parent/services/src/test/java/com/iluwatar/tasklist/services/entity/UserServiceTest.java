@@ -24,14 +24,14 @@ public class UserServiceTest extends BaseServiceTest {
 
 	@Before
     public void setup() {
-        final String filename = "file:src/test/sql/userservice.sql";
+        final String filename = "classpath:createtables.sql";
         runSql(filename);
     }
 
 	@Test
 	public void testGetUser() {
 
-        final String filename = "file:src/test/sql/insertuser.sql";
+        final String filename = "classpath:insertuser.sql";
         runSql(filename);
 
         User user = userService.getUser(1);
@@ -56,7 +56,7 @@ public class UserServiceTest extends BaseServiceTest {
 
 	@Test
 	public void testRemoveUser() {
-        final String filename = "file:src/test/sql/insertuser.sql";
+        final String filename = "classpath:insertuser.sql";
         runSql(filename);
 
 		int count = userService.findAll().size();
@@ -70,7 +70,7 @@ public class UserServiceTest extends BaseServiceTest {
 	@Test
 	public void testUpdateUser() {
 		
-        final String filename = "file:src/test/sql/insertuser.sql";
+        final String filename = "classpath:insertuser.sql";
         runSql(filename);
 
 		int count = userService.findAll().size();
