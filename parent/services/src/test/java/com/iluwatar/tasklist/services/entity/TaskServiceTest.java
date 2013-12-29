@@ -49,5 +49,20 @@ public class TaskServiceTest extends BaseServiceTest {
 		tasklists = taskService.getUserTasklists(user.getId());
 		assertEquals(tasklists.size(), 1);
 	}
+
+	@Test
+	public void testRemoveTasklist() {
+		
+		final String filename = "file:src/test/sql/removetasklist.sql";
+		runSql(filename);
+
+		Collection<Tasklist> tasklists = taskService.getUserTasklists(1);
+		assertEquals(tasklists.size(), 1);
+
+		taskService.removeTasklist(1);
+		tasklists = taskService.getUserTasklists(1);
+		assertEquals(tasklists.size(), 0);
+		
+	}
 	
 }
