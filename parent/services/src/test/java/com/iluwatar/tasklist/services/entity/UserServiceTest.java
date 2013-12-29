@@ -27,6 +27,16 @@ public class UserServiceTest extends BaseServiceTest {
         final String filename = "file:src/test/sql/userservice.sql";
         runSql(filename);
     }
+
+	@Test
+	public void testGetUser() {
+
+        final String filename = "file:src/test/sql/insertuser.sql";
+        runSql(filename);
+
+        User user = userService.getUser(1);
+        assertNotNull(user);
+	}
 	
 	@Test
 	public void testPersistUser() {
@@ -76,16 +86,6 @@ public class UserServiceTest extends BaseServiceTest {
 		User updatedUser = userService.getUser(1);
 		assertEquals(updatedUser.getUsername(), "pekka");
 		
-	}
-
-	@Test
-	public void testGetUser() {
-
-        final String filename = "file:src/test/sql/insertuser.sql";
-        runSql(filename);
-
-        User user = userService.getUser(1);
-        assertNotNull(user);
 	}
 	
 }

@@ -34,6 +34,15 @@ public class TaskServiceTest extends BaseServiceTest {
         final String filename = "file:src/test/sql/taskservice.sql";
         runSql(filename);
     }
+
+	@Test
+	public void testGetTasklist() {
+		final String filename = "file:src/test/sql/inserttasklist.sql";
+		runSql(filename);
+		
+		Tasklist tasklist = taskService.getTasklist(1);
+		assertNotNull(tasklist);
+	}
 	
 	@Test
 	public void testPersistTasklist() {
@@ -81,6 +90,17 @@ public class TaskServiceTest extends BaseServiceTest {
 		
 		tasklist = taskService.getTasklist(1);
 		assertEquals(tasklist.getName(), "bazooka");
+	}
+
+	@Test
+	public void testGetTask() {
+		final String filename = "file:src/test/sql/inserttasklist.sql";
+		runSql(filename);
+		final String filename2 = "file:src/test/sql/inserttask.sql";
+		runSql(filename2);
+		
+		Task task = taskService.getTask(1);
+		assertNotNull(task);
 	}
 	
 	@Test
@@ -138,5 +158,5 @@ public class TaskServiceTest extends BaseServiceTest {
 		assertEquals(task.isDone(), true);
 		assertEquals(task.getDescription(), "feed grandma");
 	}
-	
+
 }
