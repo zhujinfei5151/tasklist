@@ -16,6 +16,8 @@ public interface TaskDao {
 	void addTasklist(int userId, Tasklist tasklist);
 
 	void removeTasklist(int tasklistId);
+	
+	void updateTasklist(Tasklist tasklist);
 
 	// tasks
 	
@@ -26,5 +28,7 @@ public interface TaskDao {
 	void addTask(int tasklistId, Task task);
 	
 	void removeTask(int taskId);
+	
+	void updateTask(Task task);
 
 }

@@ -57,4 +57,12 @@ public class TaskServiceImpl implements TaskService {
 		return taskDao.getTasklistTasks(tasklistId);
 	}
 
+	public void updateTasklist(Tasklist tasklist) {
+		taskDao.updateTasklist(tasklist);
+	}
+
+	public void updateTask(Task task) {
+		taskDao.updateTask(task);
+	}
+
 }

@@ -68,6 +68,22 @@ public class TaskServiceTest extends BaseServiceTest {
 	}
 
 	@Test
+	public void testUpdateTasklist() {
+		
+		final String filename = "file:src/test/sql/inserttasklist.sql";
+		runSql(filename);
+		
+		Tasklist tasklist = taskService.getTasklist(1);
+		assertNotNull(tasklist);
+		
+		tasklist.setName("bazooka");
+		taskService.updateTasklist(tasklist);
+		
+		tasklist = taskService.getTasklist(1);
+		assertEquals(tasklist.getName(), "bazooka");
+	}
+	
+	@Test
 	public void testPersistTask() {
 		
 		final String filename = "file:src/test/sql/inserttasklist.sql";
@@ -102,6 +118,25 @@ public class TaskServiceTest extends BaseServiceTest {
 		taskService.removeTask(1);
 		tasks = taskService.getTasklistTasks(1);
 		assertEquals(tasks.size(), 0);
+	}
+	
+	@Test
+	public void testUpdateTask() {
+		final String filename = "file:src/test/sql/inserttasklist.sql";
+		runSql(filename);
+		final String filename2 = "file:src/test/sql/inserttask.sql";
+		runSql(filename2);
+		
+		Task task = taskService.getTask(1);
+		assertNotNull(task);
+		
+		task.setDone(true);
+		task.setDescription("feed grandma");
+		taskService.updateTask(task);
+		
+		task = taskService.getTask(1);
+		assertEquals(task.isDone(), true);
+		assertEquals(task.getDescription(), "feed grandma");
 	}
 	
 }

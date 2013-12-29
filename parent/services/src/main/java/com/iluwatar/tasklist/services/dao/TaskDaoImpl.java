@@ -64,4 +64,12 @@ public class TaskDaoImpl implements TaskDao {
 		
 	}
 
+	public void updateTasklist(Tasklist tasklist) {
+		em.persist(tasklist);
+	}
+
+	public void updateTask(Task task) {
+		em.persist(task);
+	}
+
 }
