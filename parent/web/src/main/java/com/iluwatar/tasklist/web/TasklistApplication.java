@@ -15,6 +15,7 @@ import com.iluwatar.tasklist.web.page.LoginPage;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.less.BootstrapLess;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -49,6 +50,7 @@ public class TasklistApplication extends AuthenticatedWebApplication
 		spring.inject(this);
 		
 		Bootstrap.install(this, new BootstrapSettings());
+		BootstrapLess.install(this);
 	}
 	
 	protected SpringComponentInjector newInjector() {

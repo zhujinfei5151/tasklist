@@ -82,6 +82,13 @@ public class TasklistSession extends AuthenticatedWebSession {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Override
+	public void signOut() {
+		this.user = null;
+		super.signOut();
 	}	
 
+	
 }

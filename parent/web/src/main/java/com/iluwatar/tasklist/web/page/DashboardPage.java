@@ -1,16 +1,14 @@
 package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.spring.injection.annot.SpringBean;
 
 // 1. select tasklist -> move to view tasklist page
 // 2. create new tasklist
 // 3. remove tasklist
 
 @AuthorizeInstantiation("USER")
-public class DashboardPage extends WebPage {
+public class DashboardPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 
