@@ -5,6 +5,8 @@ import java.util.Collection;
 import com.iluwatar.tasklist.services.entity.User;
 
 public interface UserDao {
+
+	User getUser(int userId);
 	
 	void addUser(User user);
 	
@@ -13,8 +15,6 @@ public interface UserDao {
 	void clearUsers();
 
 	Collection<User> findAll();
-	
-	User getUser(int userId);
 
 	User getUserByUsername(String username);
 	

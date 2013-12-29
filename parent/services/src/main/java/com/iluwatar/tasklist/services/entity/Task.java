@@ -23,9 +23,9 @@ public class Task implements Serializable {
 	
 	private boolean done;
 	
-	private Date date;
+	private Date donedate;
 	
-	private int orderNum;
+	private int ordernum;
 	
 	@ManyToOne
 	@JoinColumn(nullable=false)
@@ -58,20 +58,28 @@ public class Task implements Serializable {
 		this.done = done;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDonedate() {
+		return donedate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDonedate(Date donedate) {
+		this.donedate = donedate;
 	}
 
-	public int getOrderNum() {
-		return orderNum;
+	public int getOrdernum() {
+		return ordernum;
 	}
 
-	public void setOrderNum(int orderNum) {
-		this.orderNum = orderNum;
+	public void setOrdernum(int ordernum) {
+		this.ordernum = ordernum;
+	}
+
+	public Tasklist getTasklist() {
+		return tasklist;
+	}
+
+	public void setTasklist(Tasklist tasklist) {
+		this.tasklist = tasklist;
 	}
 	
 }
