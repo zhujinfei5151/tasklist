@@ -17,8 +17,8 @@ import com.iluwatar.tasklist.services.entity.Task;
 import com.iluwatar.tasklist.web.TasklistConstants;
 
 // 1. list tasks that are not completed
-// 2. mark task completed
-// 3. display completed tasks
+// 2. display completed tasks
+// 3. mark task completed
 // 4. move to edit tasklist page
 
 @AuthorizeInstantiation("USER")
