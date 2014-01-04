@@ -33,9 +33,9 @@ public class LoginPage extends BasePage {
 	    public LoginForm(String id) {
 	        super(id);
 	        setModel(new CompoundPropertyModel(this));
-	        add(new Label("usernameLabel", "login.username.label"));
+	        add(new Label("usernameLabel", getString("login.username")));
 	        add(new RequiredTextField("username"));
-	        add(new Label("passwordLabel", "login.password.label"));
+	        add(new Label("passwordLabel", getString("login.password")));
 	        add(new PasswordTextField("password"));
 	        add(new FeedbackPanel("feedback"));
 	 

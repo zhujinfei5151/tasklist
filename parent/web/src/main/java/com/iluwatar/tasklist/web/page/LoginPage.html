@@ -9,17 +9,20 @@
 
 	<wicket:extend>
 
-		<h1>Front page</h1>
+		<h1><wicket:message key="login.header"/></h1>
 	
 		<form wicket:id="loginForm">
-	        <span wicket:id="usernameLabel">Username</span>:<br />
-	        <input type="text" wicket:id="username" /><br />
-	        <br />
-	        <span wicket:id="passwordLabel">Username</span>:<br />
-	        <input type="password" wicket:id="password" /><br />
-	        <br />
-	        <input type="submit" value="login.submit.label" />
-	 
+			<div>
+	        	<div><span wicket:id="usernameLabel">Username</span>:</div>
+	        	<input type="text" wicket:id="username" /><br />
+	        </div>
+	        <div>
+	        	<div><span wicket:id="passwordLabel">Username</span>:</div>
+	        	<input type="password" wicket:id="password" /><br />
+	        </div>
+	        <div>
+	        	<input type="submit" wicket:message="value:login.submit" />
+	 		</div>
 	        <div id="errorMessages" wicket:id="feedback"></div>
 	    </form>
     
