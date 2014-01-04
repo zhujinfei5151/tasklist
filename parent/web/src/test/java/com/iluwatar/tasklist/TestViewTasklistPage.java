@@ -2,6 +2,7 @@ package com.iluwatar.tasklist;
 
 import org.junit.Test;
 
+import com.iluwatar.tasklist.web.page.LoginPage;
 import com.iluwatar.tasklist.web.page.ViewTasklistPage;
 
 public class TestViewTasklistPage extends TestBase {
@@ -13,7 +14,7 @@ public class TestViewTasklistPage extends TestBase {
 		tester.startPage(ViewTasklistPage.class);
 
 		//assert rendered page class
-		tester.assertRenderedPage(ViewTasklistPage.class);
+		tester.assertRenderedPage(LoginPage.class);
 	}
 	
 }

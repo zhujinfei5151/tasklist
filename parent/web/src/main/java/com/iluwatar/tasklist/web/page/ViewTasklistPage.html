@@ -5,6 +5,21 @@
 		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
 	</head>
 	<body>
-		<h1><wicket:message key="viewtasklist.header"></wicket:message></h1>
+	
+		<wicket:extend>
+	
+			<h1><wicket:message key="viewtasklist.header"></wicket:message></h1>
+			
+			<form wicket:id="form">
+				<ul>
+					<li wicket:id="task">
+						<input type="checkbox" wicket:id="check" />
+						<span wicket:id="description"></span>
+					</li>
+				</ul>
+			</form>
+		
+		</wicket:extend>
+		
 	</body>
 </html>
