@@ -65,11 +65,11 @@ public class TaskDaoImpl implements TaskDao {
 	}
 
 	public void updateTasklist(Tasklist tasklist) {
-		em.persist(tasklist);
+		em.merge(tasklist);
 	}
 
 	public void updateTask(Task task) {
-		em.persist(task);
+		em.merge(task);
 	}
 
 }

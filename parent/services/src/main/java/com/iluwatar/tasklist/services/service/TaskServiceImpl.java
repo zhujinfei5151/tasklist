@@ -57,10 +57,12 @@ public class TaskServiceImpl implements TaskService {
 		return taskDao.getTasklistTasks(tasklistId);
 	}
 
+	@Transactional
 	public void updateTasklist(Tasklist tasklist) {
 		taskDao.updateTasklist(tasklist);
 	}
 
+	@Transactional
 	public void updateTask(Task task) {
 		taskDao.updateTask(task);
 	}
