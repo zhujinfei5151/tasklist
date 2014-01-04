@@ -7,4 +7,5 @@
 	<entry key="login.submit">Login</entry>
 	<entry key="dashboard.header">Dashboard</entry>
 	<entry key="profile.header">Profile</entry>
+	<entry key="viewtasklist.header">View tasklist</entry>
 </properties>

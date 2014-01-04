@@ -1,9 +1,19 @@
 package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
-import org.apache.wicket.markup.repeater.RepeatingView;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
-// 1. select tasklist -> move to view tasklist page
+import com.iluwatar.tasklist.model.UserTasklistsLDM;
+import com.iluwatar.tasklist.services.entity.Tasklist;
+import com.iluwatar.tasklist.services.service.TaskService;
+import com.iluwatar.tasklist.web.TasklistConstants;
+import com.iluwatar.tasklist.web.TasklistSession;
+
 // 2. create new tasklist
 // 3. remove tasklist
 
@@ -12,28 +22,38 @@ public class DashboardPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 
+	@SpringBean
+	TaskService taskService;
 	
 	public DashboardPage() {
 		super();
-			
-		RepeatingView rv = new RepeatingView("items") {
+
+		add(new ListView<Tasklist>("items", new UserTasklistsLDM(TasklistSession.get().getUser().getId())) {
 
 			private static final long serialVersionUID = 1L;
-			
+
 			@Override
-			protected void onPopulate() {
-				super.onPopulate();
-				
-//				final Collection<Task> tasks = userTaskService.findAll(1);
-//				
-//				for (Task t: tasks) {
-//					add(new Label(newChildId(), t.getDescription()));
-//				}
+			protected void populateItem(final ListItem<Tasklist> item) {
+
+				Link<Void> link = new Link<Void>("tasklistlink") {
+
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						PageParameters params = new PageParameters();
+						params.add(TasklistConstants.PAGE_PARAM_TASKLIST_ID, item.getModelObject().getId());
+						setResponsePage(ViewTasklistPage.class, params);
+					}
+					
+				};
+				item.add(link);
+				Label label = new Label("tasklistname", item.getModelObject().getName());
+				link.add(label);
 				
 			}
 			
-		};
-		add(rv);
+		});
 		
 	}
 	
