@@ -57,7 +57,7 @@ public class TaskDaoImpl implements TaskDao {
 	}
 
 	public Collection<Task> getTasklistTasks(int tasklistId) {
-		Query q = em.createQuery("select t from Task t where t.tasklist.id=:tasklistId");
+		Query q = em.createQuery("select t from Task t where t.tasklist.id=:tasklistId order by t.ordernum asc");
 		q.setParameter("tasklistId", tasklistId);
 		List<Task> tasks = q.getResultList();
 		return tasks;
