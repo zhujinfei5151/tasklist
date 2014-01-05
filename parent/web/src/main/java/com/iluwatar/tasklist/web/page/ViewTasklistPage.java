@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
@@ -43,6 +44,8 @@ public class ViewTasklistPage extends BasePage {
 	@SpringBean
 	TaskService taskService;
 	
+	private int tasklistId;
+	
 	public ViewTasklistPage(PageParameters params) {
 		
 		//------------------
@@ -52,7 +55,7 @@ public class ViewTasklistPage extends BasePage {
 		if (sv.isNull()) {
 			throw new RestartResponseException(TasklistApplication.get().getHomePage());
 		}
-		final int tasklistId = sv.toInt();
+		tasklistId = sv.toInt();
 		Tasklist tl = taskService.getTasklist(tasklistId);
 		if (tl == null) {
 			throw new RestartResponseException(TasklistApplication.get().getHomePage());
@@ -108,6 +111,23 @@ public class ViewTasklistPage extends BasePage {
 			
 		});
 		
+		//----------------
+		// add task button
+		//----------------
+		
+		Link<Void> addTaskLink = new Link<Void>("addtask") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				PageParameters params = new PageParameters();
+				params.add(TasklistConstants.PAGE_PARAM_TASKLIST_ID, tasklistId);
+				setResponsePage(CreateTaskPage.class, params);
+			}
+			
+		};
+		add(addTaskLink);
 		
 		//----------------
 		// completed tasks

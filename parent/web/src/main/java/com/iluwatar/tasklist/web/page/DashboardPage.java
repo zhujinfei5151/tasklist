@@ -1,7 +1,5 @@
 package com.iluwatar.tasklist.web.page;
 
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -16,7 +14,6 @@ import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.TasklistSession;
 import com.iluwatar.tasklist.web.model.UserTasklistsLDM;
 
-// 2. create new tasklist
 // 3. remove tasklist
 
 @AuthorizeInstantiation("USER")

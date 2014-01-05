@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -43,6 +44,8 @@ public class TaskDaoImpl implements TaskDao {
 	}
 
 	public void addTask(int tasklistId, Task task) {
+		int ordernum = getNextTaskOrdernum(tasklistId);
+		task.setOrdernum(ordernum);
 		task.setTasklist(this.getTasklist(tasklistId));
 		em.persist(task);
 	}
@@ -78,6 +81,19 @@ public class TaskDaoImpl implements TaskDao {
 		q.setParameter("tasklistId", tasklistId);
 		List<Task> tasks = q.getResultList();
 		return tasks;
+	}
+	
+	private int getNextTaskOrdernum(int tasklistId) {
+		Query q = em.createQuery("select t from Task t where t.tasklist.id=:tasklistId order by t.ordernum desc");
+		q.setParameter("tasklistId", tasklistId);
+		try {
+			Task t = (Task) q.setMaxResults(1).getSingleResult();
+			return t.getOrdernum() + 1;
+		}
+		catch (NoResultException e) {
+			return 1;
+		}
+		
 	}
 
 }

@@ -11,7 +11,11 @@
 	<entry key="viewtasklist.header">View tasklist</entry>
 	<entry key="viewtasklist.notcompletedtasks">Todo</entry>
 	<entry key="viewtasklist.completedtasks">Done</entry>
+	<entry key="viewtasklist.addtask">Add new task</entry>
 	<entry key="createtasklist.header">Create tasklist</entry>
 	<entry key="createtasklist.tasklistname">Tasklist name</entry>
 	<entry key="createtasklist.submit">Create</entry>
+	<entry key="createtask.header">Create task</entry>
+	<entry key="createtask.taskdescription">Task description</entry>
+	<entry key="createtask.submit">Create</entry>
 </properties>
