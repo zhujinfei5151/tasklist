@@ -1,5 +1,7 @@
 package com.iluwatar.tasklist.web.model;
 
+import java.util.Date;
+
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -30,6 +32,12 @@ public class TaskCheckModel implements IModel<Boolean> {
 	public void setObject(Boolean object) {
 		Task t = taskService.getTask(taskId);
 		t.setDone(object);
+		if (object) {
+			t.setDonedate(new Date());
+		}
+		else {
+			t.setDonedate(null);
+		}
 		taskService.updateTask(t);
 	}
 

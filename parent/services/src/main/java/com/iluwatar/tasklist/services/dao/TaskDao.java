@@ -23,6 +23,8 @@ public interface TaskDao {
 	
 	Collection<Task> getTasklistTasks(int tasklistId);
 	
+	Collection<Task> getTasklistTasksCompleted(int tasklistId);
+	
 	Task getTask(int taskId);
 	
 	void addTask(int tasklistId, Task task);

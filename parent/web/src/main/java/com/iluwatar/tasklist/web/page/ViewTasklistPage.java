@@ -112,7 +112,7 @@ public class ViewTasklistPage extends BasePage {
 				});
 
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-				String desc = "[" + dt.format(item.getModelObject().getDonedate()) + "] " + item.getModelObject().getDescription();
+				String desc = "(" + dt.format(item.getModelObject().getDonedate()) + ") " + item.getModelObject().getDescription();
 				Label description = new Label("completeddescription", desc);
 				item.add(description);
 				

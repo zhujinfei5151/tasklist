@@ -72,4 +72,12 @@ public class TaskDaoImpl implements TaskDao {
 		em.merge(task);
 	}
 
+	@Override
+	public Collection<Task> getTasklistTasksCompleted(int tasklistId) {
+		Query q = em.createQuery("select t from Task t where t.tasklist.id=:tasklistId and t.done=1 order by t.donedate desc");
+		q.setParameter("tasklistId", tasklistId);
+		List<Task> tasks = q.getResultList();
+		return tasks;
+	}
+
 }

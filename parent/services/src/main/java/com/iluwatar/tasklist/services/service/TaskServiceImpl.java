@@ -77,9 +77,7 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public Collection<Task> getTasklistTasksCompleted(int tasklistId) {
-		Collection<Task> allTasks = taskDao.getTasklistTasks(tasklistId);
-		Collection<Task> filteredTasks = filterTasksByCompleted(allTasks, true);
-		return filteredTasks;
+		return taskDao.getTasklistTasksCompleted(tasklistId);
 	}
 
 	private Collection<Task> filterTasksByCompleted(Collection<Task> allTasks, boolean completed) {
