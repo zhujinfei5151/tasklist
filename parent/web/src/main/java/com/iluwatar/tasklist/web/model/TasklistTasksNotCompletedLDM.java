@@ -1,4 +1,4 @@
-package com.iluwatar.tasklist.model;
+package com.iluwatar.tasklist.web.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.iluwatar.tasklist.services.entity.Task;
 import com.iluwatar.tasklist.services.service.TaskService;
 
-public class TasklistTasksLDM extends LoadableDetachableModel<List<Task>> {
+public class TasklistTasksNotCompletedLDM extends LoadableDetachableModel<List<Task>> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +19,7 @@ public class TasklistTasksLDM extends LoadableDetachableModel<List<Task>> {
 	@SpringBean
 	TaskService taskService;
 	
-	public TasklistTasksLDM(int tasklistId) {
+	public TasklistTasksNotCompletedLDM(int tasklistId) {
 		this.tasklistId = tasklistId;
 		Injector.get().inject(this);
 	}

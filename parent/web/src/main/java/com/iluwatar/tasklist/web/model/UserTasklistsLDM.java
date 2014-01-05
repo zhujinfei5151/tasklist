@@ -1,4 +1,4 @@
-package com.iluwatar.tasklist.model;
+package com.iluwatar.tasklist.web.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,4 +8,6 @@
 	<entry key="dashboard.header">Dashboard</entry>
 	<entry key="profile.header">Profile</entry>
 	<entry key="viewtasklist.header">View tasklist</entry>
+	<entry key="viewtasklist.notcompletedtasks">Todo</entry>
+	<entry key="viewtasklist.completedtasks">Done</entry>
 </properties>

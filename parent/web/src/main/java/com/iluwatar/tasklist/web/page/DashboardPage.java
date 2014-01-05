@@ -8,11 +8,11 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import com.iluwatar.tasklist.model.UserTasklistsLDM;
 import com.iluwatar.tasklist.services.entity.Tasklist;
 import com.iluwatar.tasklist.services.service.TaskService;
 import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.TasklistSession;
+import com.iluwatar.tasklist.web.model.UserTasklistsLDM;
 
 // 2. create new tasklist
 // 3. remove tasklist

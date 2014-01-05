@@ -61,12 +61,7 @@ public class TaskServiceImpl implements TaskService {
 	@Transactional
 	public Collection<Task> getTasklistTasksNotCompleted(int tasklistId) {
 		Collection<Task> allTasks = taskDao.getTasklistTasks(tasklistId);
-		Collection<Task> filteredTasks = new ArrayList<>();
-		for (Task t: allTasks) {
-			if (!t.isDone()) {
-				filteredTasks.add(t);
-			}
-		}
+		Collection<Task> filteredTasks = filterTasksByCompleted(allTasks, false);
 		return filteredTasks;
 	}
 	
@@ -80,4 +75,20 @@ public class TaskServiceImpl implements TaskService {
 		taskDao.updateTask(task);
 	}
 
+	@Override
+	public Collection<Task> getTasklistTasksCompleted(int tasklistId) {
+		Collection<Task> allTasks = taskDao.getTasklistTasks(tasklistId);
+		Collection<Task> filteredTasks = filterTasksByCompleted(allTasks, true);
+		return filteredTasks;
+	}
+
+	private Collection<Task> filterTasksByCompleted(Collection<Task> allTasks, boolean completed) {
+		Collection<Task> filteredTasks = new ArrayList<>();
+		for (Task t: allTasks) {
+			if (t.isDone() == completed) {
+				filteredTasks.add(t);
+			}
+		}
+		return filteredTasks;
+	}
 }

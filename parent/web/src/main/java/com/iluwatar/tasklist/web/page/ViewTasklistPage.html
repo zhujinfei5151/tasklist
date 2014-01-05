@@ -8,19 +8,34 @@
 	
 		<wicket:extend>
 	
-			<h1><wicket:message key="viewtasklist.header"></wicket:message></h1>
+			<h1><wicket:message key="viewtasklist.header"/></h1>
+
+			<h3><wicket:message key="viewtasklist.notcompletedtasks"/></h3>
 			
-			<div wicket:id="formcontainer">
-				<form wicket:id="form">
+			<div wicket:id="notcompletedcontainer">
+				<form wicket:id="notcompletedform">
 					<ul>
-						<li wicket:id="task">
-							<input type="checkbox" wicket:id="check" id="check" />
-							<label wicket:id="description" for="check"></label>
+						<li wicket:id="notcompletedtasks">
+							<input type="checkbox" wicket:id="notcompletedcheck" id="check" />
+							<label wicket:id="notcompleteddescription" for="check"></label>
 						</li>
 					</ul>
 				</form>
 			</div>
-		
+
+			<h3><wicket:message key="viewtasklist.completedtasks"/></h3>
+			
+			<div wicket:id="completedcontainer">
+				<form wicket:id="completedform">
+					<ul>
+						<li wicket:id="completedtasks">
+							<input type="checkbox" wicket:id="completedcheck" id="check" />
+							<label wicket:id="completeddescription" for="check"></label>
+						</li>
+					</ul>
+				</form>
+			</div>
+
 		</wicket:extend>
 		
 	</body>

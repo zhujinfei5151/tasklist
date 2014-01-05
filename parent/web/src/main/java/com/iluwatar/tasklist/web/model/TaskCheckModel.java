@@ -1,4 +1,4 @@
-package com.iluwatar.tasklist.model;
+package com.iluwatar.tasklist.web.model;
 
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.model.IModel;
