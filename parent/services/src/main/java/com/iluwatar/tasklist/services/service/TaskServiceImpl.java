@@ -1,5 +1,6 @@
 package com.iluwatar.tasklist.services.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.annotation.Resource;
@@ -57,6 +58,18 @@ public class TaskServiceImpl implements TaskService {
 		return taskDao.getTasklistTasks(tasklistId);
 	}
 
+	@Transactional
+	public Collection<Task> getTasklistTasksNotCompleted(int tasklistId) {
+		Collection<Task> allTasks = taskDao.getTasklistTasks(tasklistId);
+		Collection<Task> filteredTasks = new ArrayList<>();
+		for (Task t: allTasks) {
+			if (!t.isDone()) {
+				filteredTasks.add(t);
+			}
+		}
+		return filteredTasks;
+	}
+	
 	@Transactional
 	public void updateTasklist(Tasklist tasklist) {
 		taskDao.updateTasklist(tasklist);

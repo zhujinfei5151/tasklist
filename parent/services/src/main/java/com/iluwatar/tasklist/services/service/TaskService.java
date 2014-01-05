@@ -22,6 +22,8 @@ public interface TaskService {
 	// tasks
 	
 	Collection<Task> getTasklistTasks(int tasklistId);
+
+	Collection<Task> getTasklistTasksNotCompleted(int tasklistId);
 	
 	Task getTask(int taskId);
 	
