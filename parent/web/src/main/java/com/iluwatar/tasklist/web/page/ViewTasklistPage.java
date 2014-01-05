@@ -2,6 +2,7 @@ package com.iluwatar.tasklist.web.page;
 
 import java.text.SimpleDateFormat;
 
+import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
@@ -12,6 +13,7 @@ import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
 import org.wicketstuff.event.annotation.OnEvent;
@@ -57,7 +59,8 @@ public class ViewTasklistPage extends BasePage {
 			@Override
 			protected void populateItem(ListItem<Task> item) {
 				
-				CheckBox cb = new CheckBox("notcompletedcheck", new TaskCheckModel(item.getModelObject().getId()));
+				final TaskCheckModel checkModel = new TaskCheckModel(item.getModelObject().getId());
+				CheckBox cb = new CheckBox("notcompletedcheck", checkModel);
 				item.add(cb);
 				cb.add(new AjaxFormComponentUpdatingBehavior("change") {
 
@@ -66,13 +69,25 @@ public class ViewTasklistPage extends BasePage {
 					@Override
 					protected void onUpdate(AjaxRequestTarget target) {
 						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-						this.getComponent().getPage().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
 					}
 					
 				});
 
-				Label description = new Label("notcompleteddescription", item.getModelObject().getDescription());
-				item.add(description);
+				Label notCompletedDescription = new Label("notcompleteddescription", item.getModelObject().getDescription());
+				item.add(notCompletedDescription);
+				notCompletedDescription.add(new AjaxEventBehavior("click") {
+
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					protected void onEvent(AjaxRequestTarget target) {
+						checkModel.setObject(!checkModel.getObject());
+						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
+						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+					}
+					
+				});
 				
 			}
 			
@@ -96,7 +111,8 @@ public class ViewTasklistPage extends BasePage {
 			@Override
 			protected void populateItem(ListItem<Task> item) {
 				
-				CheckBox cb = new CheckBox("completedcheck", new TaskCheckModel(item.getModelObject().getId()));
+				final TaskCheckModel checkModel = new TaskCheckModel(item.getModelObject().getId());
+				CheckBox cb = new CheckBox("completedcheck", checkModel);
 				item.add(cb);
 				cb.add(new AjaxFormComponentUpdatingBehavior("change") {
 
@@ -105,15 +121,29 @@ public class ViewTasklistPage extends BasePage {
 					@Override
 					protected void onUpdate(AjaxRequestTarget target) {
 						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-						this.getComponent().getPage().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
 					}
 					
 				});
 
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 				String desc = "(" + dt.format(item.getModelObject().getDonedate()) + ") " + item.getModelObject().getDescription();
-				Label description = new Label("completeddescription", desc);
-				item.add(description);
+				Label completedDescription = new Label("completeddescription", desc);
+				item.add(completedDescription);
+				
+				completedDescription.add(new AjaxEventBehavior("click") {
+
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					protected void onEvent(AjaxRequestTarget target) {
+						checkModel.setObject(!checkModel.getObject());
+						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
+						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+					}
+					
+				});
+				
 				
 			}
 			
