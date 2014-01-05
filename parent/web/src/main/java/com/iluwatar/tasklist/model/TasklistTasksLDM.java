@@ -26,7 +26,7 @@ public class TasklistTasksLDM extends LoadableDetachableModel<List<Task>> {
 	
 	@Override
 	protected List<Task> load() {
-		return new ArrayList<>(taskService.getTasklistTasks(tasklistId));
+		return new ArrayList<>(taskService.getTasklistTasksNotCompleted(tasklistId));
 	}
 
 }
