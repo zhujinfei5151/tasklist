@@ -1,5 +1,7 @@
 package com.iluwatar.tasklist.web.page;
 
+import java.text.SimpleDateFormat;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
@@ -22,10 +24,9 @@ import com.iluwatar.tasklist.web.model.TaskCheckModel;
 import com.iluwatar.tasklist.web.model.TasklistTasksCompletedLDM;
 import com.iluwatar.tasklist.web.model.TasklistTasksNotCompletedLDM;
 
-// 1. list tasks that are not completed
-// 2. display completed tasks
-// 3. mark task completed
-// 4. move to edit tasklist page
+// display done date in completed tasks
+// create new task
+// move to edit tasklist page
 
 @AuthorizeInstantiation("USER")
 public class ViewTasklistPage extends BasePage {
@@ -110,7 +111,9 @@ public class ViewTasklistPage extends BasePage {
 					
 				});
 
-				Label description = new Label("completeddescription", item.getModelObject().getDescription());
+				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+				String desc = "[" + dt.format(item.getModelObject().getDonedate()) + "] " + item.getModelObject().getDescription();
+				Label description = new Label("completeddescription", desc);
 				item.add(description);
 				
 			}
