@@ -24,7 +24,6 @@ import com.iluwatar.tasklist.web.model.TaskCheckModel;
 import com.iluwatar.tasklist.web.model.TasklistTasksCompletedLDM;
 import com.iluwatar.tasklist.web.model.TasklistTasksNotCompletedLDM;
 
-// display done date in completed tasks
 // create new task
 // move to edit tasklist page
 
@@ -67,7 +66,7 @@ public class ViewTasklistPage extends BasePage {
 					@Override
 					protected void onUpdate(AjaxRequestTarget target) {
 						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+						this.getComponent().getPage().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
 					}
 					
 				});
@@ -106,7 +105,7 @@ public class ViewTasklistPage extends BasePage {
 					@Override
 					protected void onUpdate(AjaxRequestTarget target) {
 						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+						this.getComponent().getPage().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
 					}
 					
 				});
