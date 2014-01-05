@@ -2,6 +2,8 @@ package com.iluwatar.tasklist.web.page;
 
 import java.text.SimpleDateFormat;
 
+import org.apache.wicket.RestartResponseException;
+import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
@@ -15,10 +17,14 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValue;
 import org.wicketstuff.event.annotation.OnEvent;
 
 import com.iluwatar.tasklist.services.entity.Task;
+import com.iluwatar.tasklist.services.entity.Tasklist;
+import com.iluwatar.tasklist.services.service.TaskService;
+import com.iluwatar.tasklist.web.TasklistApplication;
 import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.component.AjaxRefreshableContainer;
 import com.iluwatar.tasklist.web.event.AjaxRefreshEvent;
@@ -34,14 +40,23 @@ public class ViewTasklistPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 	
+	@SpringBean
+	TaskService taskService;
+	
 	public ViewTasklistPage(PageParameters params) {
-
 		
-		
-		// TODO: check
+		//------------------
+		// handle parameters
+		//------------------
 		StringValue sv = params.get(TasklistConstants.PAGE_PARAM_TASKLIST_ID);
+		if (sv.isNull()) {
+			throw new RestartResponseException(TasklistApplication.get().getHomePage());
+		}
 		final int tasklistId = sv.toInt();
-
+		Tasklist tl = taskService.getTasklist(tasklistId);
+		if (tl == null) {
+			throw new RestartResponseException(TasklistApplication.get().getHomePage());
+		}
 		
 		//--------------------
 		// not completed tasks
@@ -92,7 +107,6 @@ public class ViewTasklistPage extends BasePage {
 			}
 			
 		});
-
 		
 		
 		//----------------
@@ -144,12 +158,9 @@ public class ViewTasklistPage extends BasePage {
 					
 				});
 				
-				
 			}
 			
 		});
-		
-		
 		
 	}
 
