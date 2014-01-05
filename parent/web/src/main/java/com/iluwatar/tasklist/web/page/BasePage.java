@@ -74,6 +74,8 @@ public class BasePage extends WebPage {
 	
 	private static class LogoutNavbarAjaxLink extends NavbarAjaxLink<String> {
 
+		private static final long serialVersionUID = 1L;
+
 		public LogoutNavbarAjaxLink(final IModel<String> labelModel) {
 			super(labelModel);
 		}

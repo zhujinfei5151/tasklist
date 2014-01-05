@@ -10,14 +10,16 @@
 	
 			<h1><wicket:message key="viewtasklist.header"></wicket:message></h1>
 			
-			<form wicket:id="form">
-				<ul>
-					<li wicket:id="task">
-						<input type="checkbox" wicket:id="check" id="check" />
-						<label wicket:id="description" for="check"></label>
-					</li>
-				</ul>
-			</form>
+			<div wicket:id="formcontainer">
+				<form wicket:id="form">
+					<ul>
+						<li wicket:id="task">
+							<input type="checkbox" wicket:id="check" id="check" />
+							<label wicket:id="description" for="check"></label>
+						</li>
+					</ul>
+				</form>
+			</div>
 		
 		</wicket:extend>
 		
