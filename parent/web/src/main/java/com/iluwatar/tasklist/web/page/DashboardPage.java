@@ -1,5 +1,7 @@
 package com.iluwatar.tasklist.web.page;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -28,6 +30,17 @@ public class DashboardPage extends BasePage {
 	public DashboardPage() {
 		super();
 
+		add(new Link<Void>("addtasklist") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(CreateTasklistPage.class);
+			}
+
+		});
+		
 		add(new ListView<Tasklist>("items", new UserTasklistsLDM(TasklistSession.get().getUser().getId())) {
 
 			private static final long serialVersionUID = 1L;

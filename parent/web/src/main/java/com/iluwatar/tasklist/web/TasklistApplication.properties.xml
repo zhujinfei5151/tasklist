@@ -6,8 +6,12 @@
 	<entry key="login.password">Password</entry>
 	<entry key="login.submit">Login</entry>
 	<entry key="dashboard.header">Dashboard</entry>
+	<entry key="dashboard.addtasklist">Add new tasklist</entry>
 	<entry key="profile.header">Profile</entry>
 	<entry key="viewtasklist.header">View tasklist</entry>
 	<entry key="viewtasklist.notcompletedtasks">Todo</entry>
 	<entry key="viewtasklist.completedtasks">Done</entry>
+	<entry key="createtasklist.header">Create tasklist</entry>
+	<entry key="createtasklist.tasklistname">Tasklist name</entry>
+	<entry key="createtasklist.submit">Create</entry>
 </properties>

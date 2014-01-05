@@ -6,7 +6,9 @@
 	</head>
 	<body>
 		<wicket:extend>
-			<h1><wicket:message key="dashboard.header"></wicket:message></h1>
+		
+			<h1><wicket:message key="dashboard.header"/></h1>
+			
 			<ul>
 				<li wicket:id="items">
 					<a href="#" wicket:id="tasklistlink">
@@ -14,6 +16,11 @@
 					</a>
 				</li>
 			</ul>
+			
+			<div>
+				<a href="#" wicket:id="addtasklist" class="btn"><wicket:message key="dashboard.addtasklist"/></a>
+			</div>
+			
 		</wicket:extend>
 	</body>
 </html>

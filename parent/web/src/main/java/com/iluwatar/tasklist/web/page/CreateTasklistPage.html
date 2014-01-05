@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<wicket:extend>
+	
+		<h1><wicket:message key="createtasklist.header"/></h1>
+		
+		<form wicket:id="form">
+			<div>
+				<label wicket:for="tasklistname"><wicket:message key="createtasklist.tasklistname"/>:</label>
+				<input type="text" wicket:id="tasklistname"/>
+			</div>
+			<div>
+				<input type="submit" class="btn" wicket:id="submit" wicket:message="value:createtasklist.submit"/>
+			</div>
+		</form>
+	
+	</wicket:extend>
+</body>
+</html>

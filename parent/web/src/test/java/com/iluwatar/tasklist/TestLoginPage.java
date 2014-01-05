@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import com.iluwatar.tasklist.web.page.LoginPage;
 
-public class TestFrontPage extends TestBase
+public class TestLoginPage extends TestBase
 {
 
 	@Test
