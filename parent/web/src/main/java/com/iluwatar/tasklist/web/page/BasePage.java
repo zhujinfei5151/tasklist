@@ -37,7 +37,7 @@ public class BasePage extends WebPage {
 		Navbar navbar = new Navbar("navbar");
 		add(navbar);
 		navbar.setPosition(Position.TOP);
-		navbar.brandName(Model.of("Tasklists"));
+		navbar.brandName(Model.of("Tasklist"));
 		navbar.fluid();
 
 		NavbarButton homeButton = new NavbarButton(DashboardPage.class, Model.of("Dashboard"));
