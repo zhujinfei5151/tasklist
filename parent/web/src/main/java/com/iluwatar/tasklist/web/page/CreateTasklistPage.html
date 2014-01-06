@@ -6,10 +6,12 @@
 	<wicket:extend>
 	
 		<h1><wicket:message key="createtasklist.header"/></h1>
+	
+		<div wicket:id="feedback"/>
 		
 		<form wicket:id="form">
 			<div>
-				<label wicket:for="tasklistname"><wicket:message key="createtasklist.tasklistname"/>:</label>
+				<label wicket:for="tasklistname">* <wicket:message key="createtasklist.tasklistname"/>:</label>
 				<input type="text" wicket:id="tasklistname"/>
 			</div>
 			<div>

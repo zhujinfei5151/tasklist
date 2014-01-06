@@ -11,19 +11,20 @@
 
 		<h1><wicket:message key="login.header"/></h1>
 
+        <div wicket:id="feedback"/>
+
 		<form wicket:id="loginForm">
 			<div>
-	        	<div><span wicket:id="usernameLabel">Username</span>:</div>
-	        	<input type="text" wicket:id="username" /><br />
+	        	<div><span wicket:id="usernameLabel"/>:</div>
+	        	<input type="text" wicket:id="username" />
 	        </div>
 	        <div>
-	        	<div><span wicket:id="passwordLabel">Username</span>:</div>
-	        	<input type="password" wicket:id="password" /><br />
+	        	<div><span wicket:id="passwordLabel"/>:</div>
+	        	<input type="password" wicket:id="password" />
 	        </div>
 	        <div>
 	        	<input type="submit" wicket:message="value:login.submit" class="btn" />
 	 		</div>
-	        <div id="errorMessages" wicket:id="feedback"></div>
 	    </form>
     
     </wicket:extend>

@@ -5,6 +5,7 @@
 	<entry key="login.username">Username</entry>
 	<entry key="login.password">Password</entry>
 	<entry key="login.submit">Login</entry>
+	<entry key="login.failed">Incorrect username or password</entry>
 	<entry key="dashboard.header">Dashboard</entry>
 	<entry key="dashboard.addtasklist">Add new tasklist</entry>
 	<entry key="profile.header">Profile</entry>

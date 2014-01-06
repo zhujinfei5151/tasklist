@@ -4,8 +4,10 @@ import org.apache.wicket.authroles.authorization.strategies.role.annotations.Aut
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import com.iluwatar.tasklist.services.entity.Tasklist;
@@ -24,11 +26,15 @@ public class CreateTasklistPage extends BasePage {
 	
 	public CreateTasklistPage() {
 		
+		add(new FeedbackPanel("feedback"));
+		
 		Form<Void> form = new Form<>("form");
 		add(form);
 		
 		TextField<String> nameField = new TextField<>("tasklistname", nameModel);
 		form.add(nameField);
+		nameField.setRequired(true);
+		nameField.setLabel(new ResourceModel("createtasklist.tasklistname"));
 		
 		SubmitLink submitLink = new SubmitLink("submit") {
 

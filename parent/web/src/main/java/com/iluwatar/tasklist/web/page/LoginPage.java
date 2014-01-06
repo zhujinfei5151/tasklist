@@ -17,6 +17,8 @@ public class LoginPage extends BasePage {
 
 	public LoginPage(final PageParameters parameters) {
 		super(parameters);
+
+        add(new FeedbackPanel("feedback"));
 		
 		final LoginForm form = new LoginForm("loginForm");
 	    add(form);
@@ -37,7 +39,6 @@ public class LoginPage extends BasePage {
 	        add(new RequiredTextField("username"));
 	        add(new Label("passwordLabel", getString("login.password")));
 	        add(new PasswordTextField("password"));
-	        add(new FeedbackPanel("feedback"));
 	 
 	    }
 	 
@@ -47,7 +48,7 @@ public class LoginPage extends BasePage {
 	        if (session.signIn(username, password)) {
 	        	setResponsePage(DashboardPage.class);
 	        } else {
-	        	error("login.failed.badcredentials");
+	        	error(getString("login.failed"));
 	        }
 	    }
 
