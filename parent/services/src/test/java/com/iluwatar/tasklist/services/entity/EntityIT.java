@@ -4,11 +4,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class EntityTest {
+public class EntityIT {
 
 	EntityManagerFactory emf = null;
 
-	public EntityTest() {
+	public EntityIT() {
 		emf = Persistence.createEntityManagerFactory("tasklistPU");
 	}
 
@@ -56,7 +56,7 @@ public class EntityTest {
 
 		try {
 			
-			EntityTest test = new EntityTest();
+			EntityIT test = new EntityIT();
 
 			User u = new User();
 			u.setUsername("jukka");

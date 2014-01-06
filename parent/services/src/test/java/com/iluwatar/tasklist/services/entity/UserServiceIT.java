@@ -17,7 +17,7 @@ import com.iluwatar.tasklist.services.service.UserService;
 @ContextConfiguration(locations = { "file:src/test/resources/test-context.xml" })
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-public class UserServiceTest extends BaseServiceTest {
+public class UserServiceIT extends BaseServiceIT {
 
 	@Autowired
 	UserService userService;
