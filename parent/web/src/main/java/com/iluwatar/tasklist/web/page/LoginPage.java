@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 // 1. create user
@@ -35,11 +36,18 @@ public class LoginPage extends BasePage {
 	    public LoginForm(String id) {
 	        super(id);
 	        setModel(new CompoundPropertyModel(this));
-	        add(new Label("usernameLabel", getString("login.username")));
-	        add(new RequiredTextField("username"));
-	        add(new Label("passwordLabel", getString("login.password")));
-	        add(new PasswordTextField("password"));
-	 
+
+	        Label usernameLabel = new Label("usernameLabel", getString("login.username"));
+	        add(usernameLabel);
+	        RequiredTextField usernameField = new RequiredTextField("username");
+	        add(usernameField);
+	        usernameField.setLabel(usernameLabel.getDefaultModel());
+	        
+	        Label passwordLabel = new Label("passwordLabel", getString("login.password"));
+	        add(passwordLabel);
+	        PasswordTextField passwordField = new PasswordTextField("password");
+	        add(passwordField);
+	        passwordField.setLabel((IModel<String>) passwordLabel.getDefaultModel());
 	    }
 	 
 	    @Override
