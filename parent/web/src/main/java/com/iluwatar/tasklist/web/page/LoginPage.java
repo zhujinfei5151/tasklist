@@ -10,9 +10,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-// 1. create user
-// 2. login -> move to dashboard page
-// 3. lost password
+// register new user
+
 public class LoginPage extends BasePage {
 	private static final long serialVersionUID = 1L;
 

@@ -2,15 +2,15 @@ package com.iluwatar.tasklist;
 
 import org.junit.Test;
 
-import com.iluwatar.tasklist.web.page.DashboardPage;
 import com.iluwatar.tasklist.web.page.LoginPage;
+import com.iluwatar.tasklist.web.page.ProfilePage;
 
-public class TestDashboardPage extends TestBase {
+public class TestProfilePage extends TestBase {
 
 	@Test
 	public void notLoggedInRedirectsToLoginPage()
 	{
-		tester.startPage(DashboardPage.class);
+		tester.startPage(ProfilePage.class);
 
 		tester.assertRenderedPage(LoginPage.class);
 	}
@@ -20,9 +20,9 @@ public class TestDashboardPage extends TestBase {
 	{
 		MockTasklistSession.get().setValidUser(true);
 		
-		tester.startPage(DashboardPage.class);
+		tester.startPage(ProfilePage.class);
 
-		tester.assertRenderedPage(DashboardPage.class);
+		tester.assertRenderedPage(ProfilePage.class);
 	}
 	
 }

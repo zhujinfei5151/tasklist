@@ -14,5 +14,16 @@ public class TestCreateTasklistPage extends TestBase {
 
 		tester.assertRenderedPage(LoginPage.class);
 	}
-	
+
+
+	@Test
+	public void renderPage()
+	{
+		MockTasklistSession.get().setValidUser(true);
+		
+		tester.startPage(CreateTasklistPage.class);
+
+		tester.assertRenderedPage(CreateTasklistPage.class);
+	}
+		
 }
