@@ -4,7 +4,30 @@
 </head>
 <body>
 	<wicket:extend>
+	
 		<h1><wicket:message key="profile.header"></wicket:message></h1>
+
+		<div wicket:id="feedback"/>
+
+		<form wicket:id="form">
+			<div>
+				<label wicket:for="username"><wicket:message key="profile.username"/>:</label>
+				<input type="text" wicket:id="username"/>
+			</div>
+	        <div>
+				<label wicket:for="password"><wicket:message key="profile.password"/>:</label>
+	        	<input type="password" wicket:id="password" />
+	        </div>
+	        <div>
+				<label wicket:for="password2"><wicket:message key="profile.password2"/>:</label>
+	        	<input type="password" wicket:id="password2" />
+	        </div>
+			<div>
+				<input type="button" class="btn" wicket:id="edit" wicket:message="value:profile.edit"/>
+				<input type="submit" class="btn" wicket:id="save" wicket:message="value:profile.save"/>
+			</div>
+		</form>
+		
 	</wicket:extend>
 </body>
 </html>

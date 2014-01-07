@@ -1,6 +1,7 @@
 package com.iluwatar.tasklist.services.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -30,6 +31,14 @@ public class User implements Serializable {
 	
 	public User() {
 	}
+
+//	public User(User another) {
+//		this.id = another.id;
+//		this.username = another.username;
+//		this.passwordHash = another.passwordHash;
+//		this.tasklists = new HashSet<>();
+//		this.tasklists.addAll(another.getTasklists());
+//	}
 	
 	public int getId() {
 		return id;
