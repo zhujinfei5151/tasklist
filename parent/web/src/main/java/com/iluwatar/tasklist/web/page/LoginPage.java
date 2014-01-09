@@ -5,12 +5,11 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-
-// register new user
 
 public class LoginPage extends BasePage {
 	private static final long serialVersionUID = 1L;
@@ -26,10 +25,10 @@ public class LoginPage extends BasePage {
     }
 	
 	private static class LoginForm extends StatelessForm {
-		 
-	    private static final long serialVersionUID = -6826853507535977683L;
 	 
-	    private String username;
+		private static final long serialVersionUID = 1L;
+
+		private String username;
 	    private String password;
 	 
 	    public LoginForm(String id) {
@@ -47,6 +46,18 @@ public class LoginPage extends BasePage {
 	        PasswordTextField passwordField = new PasswordTextField("password");
 	        add(passwordField);
 	        passwordField.setLabel((IModel<String>) passwordLabel.getDefaultModel());
+	        
+	        Link<Void> registerLink = new Link<Void>("register") {
+
+				private static final long serialVersionUID = 1L;
+
+				@Override
+				public void onClick() {
+					setResponsePage(RegisterPage.class);
+				}
+	        	
+	        };
+	        add(registerLink);
 	    }
 	 
 	    @Override
