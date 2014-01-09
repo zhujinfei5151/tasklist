@@ -1,10 +1,14 @@
 package com.iluwatar.tasklist.services.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: User
@@ -31,14 +35,6 @@ public class User implements Serializable {
 	
 	public User() {
 	}
-
-//	public User(User another) {
-//		this.id = another.id;
-//		this.username = another.username;
-//		this.passwordHash = another.passwordHash;
-//		this.tasklists = new HashSet<>();
-//		this.tasklists.addAll(another.getTasklists());
-//	}
 	
 	public int getId() {
 		return id;

@@ -8,6 +8,13 @@
 	<entry key="login.submit">Login</entry>
 	<entry key="login.failed">Incorrect username or password</entry>
 	<entry key="register.header">Register</entry>
+	<entry key="register.username">Username</entry>
+	<entry key="register.password">Password</entry>
+	<entry key="register.password2">Retype password</entry>
+	<entry key="register.submit">Register</entry>
+	<entry key="register.save.usernameexists">Username is already is use - please try something else</entry>
+	<entry key="register.save.passwordsnotequal">The passwords do not match - please check typing</entry>
+	<entry key="register.save.success">New user was registered successfully</entry>
 	<entry key="dashboard.header">Dashboard</entry>
 	<entry key="dashboard.addtasklist">Add new tasklist</entry>
 	<entry key="profile.header">Profile</entry>

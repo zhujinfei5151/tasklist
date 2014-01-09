@@ -7,6 +7,28 @@
 	<wicket:extend>
 
 		<h1><wicket:message key="register.header"/></h1>
+		
+		<div wicket:id="feedback"/>
+
+		<form wicket:id="form">
+		
+			<div>
+				<label wicket:for="username"><wicket:label></wicket:label>:</label>
+				<input type="text" wicket:id="username"/>
+			</div>
+			<div>
+				<label wicket:for="password"><wicket:label></wicket:label>:</label>
+				<input type="password" wicket:id="password"/>
+			</div>
+			<div>
+				<label wicket:for="password2"><wicket:label></wicket:label>:</label>
+				<input type="password" wicket:id="password2"/>
+			</div>
+			<div>
+				<input type="submit" wicket:message="value:register.submit" wicket:id="submit"/>
+			</div>
+		
+		</form>
     
     </wicket:extend>
 
