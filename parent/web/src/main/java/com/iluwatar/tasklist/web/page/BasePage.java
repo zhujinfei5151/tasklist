@@ -1,5 +1,6 @@
 package com.iluwatar.tasklist.web.page;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -49,11 +50,22 @@ public class BasePage extends WebPage {
 				Navbar.ComponentPosition.LEFT,
 				homeButton));
 
-		NavbarButton tasksButton = new NavbarButton(ViewTasklistPage.class, tasklistNameModel);
+		NavbarButton tasksButton = new NavbarButton(ViewTasklistPage.class, tasklistNameModel) {
+
+			@Override
+			public boolean isActive(Component button) {
+				if (button.getPage().getClass().equals(ViewTasklistPage.class) ||
+						button.getPage().getClass().equals(EditTasklistPage.class)) {
+					return true;
+				}
+				return false;
+			}
+			
+		};
 		navbar.addComponents(NavbarComponents.transform(
 				Navbar.ComponentPosition.LEFT,
 				tasksButton));
-		tasksButton.add(new VisibleWhenCurrentPageOfTypeBehavior(ViewTasklistPage.class));
+		tasksButton.add(new VisibleWhenCurrentPageOfTypeBehavior(ViewTasklistPage.class, EditTasklistPage.class));
 		
 		NavbarButton profileButton = new NavbarButton(ProfilePage.class, new ProfileButtonModel());
 		navbar.addComponents(NavbarComponents.transform(

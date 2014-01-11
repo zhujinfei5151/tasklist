@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+	<wicket:extend>
+	
+		<h1><wicket:message key="edittasklist.header"/></h1>
+	
+		<div wicket:id="container">
+			<form wicket:id="form">
+				<ul>
+					<li wicket:id="tasks">
+						<input type="button" wicket:message="value:edittasklist.remove" wicket:id="remove" />
+						<input type="text" wicket:id="description" />
+					</li>
+				</ul>
+				<div>
+					<input type="button" wicket:message="value:edittasklist.cancel" wicket:id="cancel" />
+					<input type="submit" wicket:message="value:edittasklist.submit" wicket:id="submit" />
+				</div>
+			</form>
+		</div>
+	
+	</wicket:extend>
+
+</body>
+</html>
