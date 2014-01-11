@@ -11,6 +11,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import com.iluwatar.tasklist.web.TasklistSession;
 import com.iluwatar.tasklist.web.behavior.VisibleWhenCurrentPageOfTypeBehavior;
 import com.iluwatar.tasklist.web.behavior.VisibleWhenLoggedInBehavior;
+import com.iluwatar.tasklist.web.model.ProfileButtonModel;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.Position;
@@ -51,7 +52,7 @@ public class BasePage extends WebPage {
 				tasksButton));
 		tasksButton.add(new VisibleWhenCurrentPageOfTypeBehavior(ViewTasklistPage.class));
 		
-		NavbarButton profileButton = new NavbarButton(ProfilePage.class, Model.of("Matti Mainio"));
+		NavbarButton profileButton = new NavbarButton(ProfilePage.class, new ProfileButtonModel());
 		navbar.addComponents(NavbarComponents.transform(
 				Navbar.ComponentPosition.RIGHT,
 				profileButton));
