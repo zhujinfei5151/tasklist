@@ -33,7 +33,6 @@ import com.iluwatar.tasklist.web.model.TaskCheckModel;
 import com.iluwatar.tasklist.web.model.TasklistTasksCompletedLDM;
 import com.iluwatar.tasklist.web.model.TasklistTasksNotCompletedLDM;
 
-// create new task
 // move to edit tasklist page
 
 @AuthorizeInstantiation("USER")
@@ -48,6 +47,8 @@ public class ViewTasklistPage extends BasePage {
 	
 	public ViewTasklistPage(PageParameters params) {
 		
+		super(params);
+		
 		//------------------
 		// handle parameters
 		//------------------
@@ -60,6 +61,7 @@ public class ViewTasklistPage extends BasePage {
 		if (tl == null) {
 			throw new RestartResponseException(TasklistApplication.get().getHomePage());
 		}
+		tasklistNameModel.setObject(tl.getName());
 		
 		//--------------------
 		// not completed tasks

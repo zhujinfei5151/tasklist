@@ -23,6 +23,8 @@ import de.agilecoders.wicket.less.LessResourceReference;
 public class BasePage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
+	
+	protected IModel<String> tasklistNameModel = Model.of("");
 
 	public BasePage() {
 		super();
@@ -46,7 +48,7 @@ public class BasePage extends WebPage {
 				Navbar.ComponentPosition.LEFT,
 				homeButton));
 
-		NavbarButton tasksButton = new NavbarButton(ViewTasklistPage.class, Model.of("Tasks"));
+		NavbarButton tasksButton = new NavbarButton(ViewTasklistPage.class, tasklistNameModel);
 		navbar.addComponents(NavbarComponents.transform(
 				Navbar.ComponentPosition.LEFT,
 				tasksButton));
