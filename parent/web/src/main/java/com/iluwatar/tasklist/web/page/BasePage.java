@@ -13,6 +13,7 @@ import com.iluwatar.tasklist.web.behavior.VisibleWhenCurrentPageOfTypeBehavior;
 import com.iluwatar.tasklist.web.behavior.VisibleWhenLoggedInBehavior;
 import com.iluwatar.tasklist.web.model.ProfileButtonModel;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.Position;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarAjaxLink;
@@ -59,6 +60,7 @@ public class BasePage extends WebPage {
 				Navbar.ComponentPosition.RIGHT,
 				profileButton));
 		profileButton.add(new VisibleWhenLoggedInBehavior());
+		profileButton.setIconType(IconType.user);
 	
 		LogoutNavbarAjaxLink logoutButton = new LogoutNavbarAjaxLink(Model.of("Logout"));
 		navbar.addComponents(NavbarComponents.transform(
@@ -66,6 +68,7 @@ public class BasePage extends WebPage {
 				logoutButton
         ));		
 		logoutButton.add(new VisibleWhenLoggedInBehavior());
+		logoutButton.setIconType(IconType.off);
 		
 	}
 
