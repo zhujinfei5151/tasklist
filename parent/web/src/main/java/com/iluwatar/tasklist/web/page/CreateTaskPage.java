@@ -2,6 +2,7 @@ package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
@@ -62,6 +63,9 @@ public class CreateTaskPage extends BasePage {
 		descriptionField.setRequired(true);
 		descriptionField.setLabel(new ResourceModel("createtask.taskdescription"));
 		
+		final CheckBox cb = new CheckBox("createanother", Model.of(false));
+		form.add(cb);
+		
 		SubmitLink submitLink = new SubmitLink("submit") {
 
 			private static final long serialVersionUID = 1L;
@@ -77,9 +81,14 @@ public class CreateTaskPage extends BasePage {
 				Task task = new Task();
 				task.setDescription(descriptionModel.getObject());
 				taskService.addTask(tasklistId, task);
-				PageParameters params = new PageParameters();
-				params.add(TasklistConstants.PAGE_PARAM_TASKLIST_ID, tasklistId);
-				setResponsePage(ViewTasklistPage.class, params);
+				if (!(boolean) cb.getDefaultModelObject()) {
+					PageParameters params = new PageParameters();
+					params.add(TasklistConstants.PAGE_PARAM_TASKLIST_ID, tasklistId);
+					setResponsePage(ViewTasklistPage.class, params);
+				}
+				else {
+					descriptionModel.setObject("");
+				}
 			}
 			
 		};
