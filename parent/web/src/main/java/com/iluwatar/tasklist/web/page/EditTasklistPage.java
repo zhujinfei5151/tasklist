@@ -102,6 +102,19 @@ public class EditTasklistPage extends BasePage {
 		};
 		form.add(listview);
 
+		Link<Void> removeTasklist = new Link<Void>("removetasklist") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				taskService.removeTasklist(tasklistId);
+				setResponsePage(TasklistApplication.get().getHomePage());
+			}
+			
+		};
+		form.add(removeTasklist);
+		
 		Link<Void> cancel = new Link<Void>("cancel") {
 
 			private static final long serialVersionUID = 1L;

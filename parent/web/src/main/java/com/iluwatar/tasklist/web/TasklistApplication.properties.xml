@@ -44,6 +44,7 @@
 	<entry key="createtask.submit">Create</entry>
 	<entry key="edittasklist.header">Edit tasklist</entry>
 	<entry key="edittasklist.remove">Remove</entry>
+	<entry key="edittasklist.removetasklist">Remove tasklist</entry>
 	<entry key="edittasklist.cancel">Cancel</entry>
 	<entry key="edittasklist.submit">Save</entry>
 </properties>
