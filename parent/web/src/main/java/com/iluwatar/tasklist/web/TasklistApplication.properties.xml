@@ -38,6 +38,7 @@
 	<entry key="viewtasklist.edit">Edit</entry>
 	<entry key="createtasklist.header">Create tasklist</entry>
 	<entry key="createtasklist.tasklistname">Tasklist name</entry>
+	<entry key="createtasklist.createanother">Create another</entry>
 	<entry key="createtasklist.submit">Create</entry>
 	<entry key="createtask.header">Create task</entry>
 	<entry key="createtask.taskdescription">Task description</entry>

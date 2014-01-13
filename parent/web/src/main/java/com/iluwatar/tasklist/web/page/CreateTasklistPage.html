@@ -9,12 +9,17 @@
 	
 		<div wicket:id="feedback"/>
 		
-		<form wicket:id="form">
-			<div>
+		<form class="form-horizontal" wicket:id="form">
+			<div class="control-group">
 				<label wicket:for="tasklistname">* <wicket:message key="createtasklist.tasklistname"/>:</label>
 				<input type="text" wicket:id="tasklistname"/>
 			</div>
-			<div>
+			<div class="control-group">
+				<label class="checkbox" wicket:for="createanother">
+					<input type="checkbox" wicket:id="createanother" /><wicket:message key="createtasklist.createanother"/>:
+				</label>
+			</div>
+			<div class="control-group">
 				<input type="submit" class="btn" wicket:id="submit" wicket:message="value:createtasklist.submit"/>
 			</div>
 		</form>

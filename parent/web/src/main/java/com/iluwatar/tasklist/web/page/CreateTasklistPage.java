@@ -1,6 +1,7 @@
 package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
@@ -36,6 +37,9 @@ public class CreateTasklistPage extends BasePage {
 		nameField.setRequired(true);
 		nameField.setLabel(new ResourceModel("createtasklist.tasklistname"));
 		
+		final CheckBox cb = new CheckBox("createanother", Model.of(false));
+		form.add(cb);
+		
 		SubmitLink submitLink = new SubmitLink("submit") {
 
 			private static final long serialVersionUID = 1L;
@@ -52,7 +56,12 @@ public class CreateTasklistPage extends BasePage {
 				Tasklist tl = new Tasklist();
 				tl.setName(nameModel.getObject());
 				taskService.addTasklist(userId, tl);
-				setResponsePage(DashboardPage.class);
+				if (!(boolean) cb.getDefaultModelObject()) {
+					setResponsePage(DashboardPage.class);
+				}
+				else {
+					nameModel.setObject("");
+				}
 			}
 			
 		};
