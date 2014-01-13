@@ -148,6 +148,24 @@ public class ViewTasklistPage extends BasePage {
 			
 		};
 		add(editLink);
+
+		//----------------
+		// reorder button
+		//----------------
+		
+		Link<Void> reorder = new Link<Void>("reorder") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				PageParameters params = new PageParameters();
+				params.add(TasklistConstants.PAGE_PARAM_TASKLIST_ID, tasklistId);
+				setResponsePage(ReorderTasklistPage.class, params);
+			}
+			
+		};
+		add(reorder);
 		
 		//----------------
 		// completed tasks

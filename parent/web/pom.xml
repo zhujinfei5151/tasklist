@@ -64,6 +64,11 @@
 		    <artifactId>wicket-bootstrap-less</artifactId>
 		    <version>${wicket-bootstrap.version}</version>
 		</dependency>		
+		<dependency>
+		    <groupId>com.googlecode.wicket-jquery-ui</groupId>
+		    <artifactId>wicket-jquery-ui</artifactId>
+		    <version>${wicket.version}</version>
+		</dependency>		
 	    <dependency>
 	      <groupId>org.springframework</groupId>
 	      <artifactId>spring-core</artifactId>

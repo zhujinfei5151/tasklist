@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<wicket:extend>
+	
+		<h1><wicket:message key="reordertasklist.header"/></h1>
+	
+		<div wicket:id="feedback"/>
+	
+		<div>
+			<ol wicket:id="sortable" class="sortable">
+				<li wicket:id="items">
+					<span wicket:id="item" class="item">[label]</span>
+				</li>
+			</ol>
+		</div>
+		
+		<div>
+			<input type="button" wicket:message="value:reordertasklist.done" wicket:id="done"/>
+		</div>
+			
+	</wicket:extend>
+</body>
+</html>

@@ -55,7 +55,8 @@ public class BasePage extends WebPage {
 			@Override
 			public boolean isActive(Component button) {
 				if (button.getPage().getClass().equals(ViewTasklistPage.class) ||
-						button.getPage().getClass().equals(EditTasklistPage.class)) {
+						button.getPage().getClass().equals(EditTasklistPage.class) ||
+						button.getPage().getClass().equals(ReorderTasklistPage.class)) {
 					return true;
 				}
 				return false;
@@ -65,7 +66,8 @@ public class BasePage extends WebPage {
 		navbar.addComponents(NavbarComponents.transform(
 				Navbar.ComponentPosition.LEFT,
 				tasksButton));
-		tasksButton.add(new VisibleWhenCurrentPageOfTypeBehavior(ViewTasklistPage.class, EditTasklistPage.class));
+		tasksButton.add(new VisibleWhenCurrentPageOfTypeBehavior(ViewTasklistPage.class, 
+				EditTasklistPage.class, ReorderTasklistPage.class));
 		
 		NavbarButton profileButton = new NavbarButton(ProfilePage.class, new ProfileButtonModel());
 		navbar.addComponents(NavbarComponents.transform(

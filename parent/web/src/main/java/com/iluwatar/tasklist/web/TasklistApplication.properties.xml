@@ -36,6 +36,7 @@
 	<entry key="viewtasklist.completedtasks">Done</entry>
 	<entry key="viewtasklist.addtask">Add new task</entry>
 	<entry key="viewtasklist.edit">Edit</entry>
+	<entry key="viewtasklist.reorder">Reorder</entry>
 	<entry key="createtasklist.header">Create tasklist</entry>
 	<entry key="createtasklist.tasklistname">Tasklist name</entry>
 	<entry key="createtasklist.createanother">Create another</entry>
@@ -49,4 +50,6 @@
 	<entry key="edittasklist.removetasklist">Remove tasklist</entry>
 	<entry key="edittasklist.cancel">Cancel</entry>
 	<entry key="edittasklist.submit">Save</entry>
+	<entry key="reordertasklist.header">Reorder tasklist</entry>
+	<entry key="reordertasklist.done">Done</entry>
 </properties>
