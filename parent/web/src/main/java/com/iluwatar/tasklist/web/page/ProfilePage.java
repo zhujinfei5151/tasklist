@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -27,13 +28,18 @@ public class ProfilePage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 	
+	private String name;
 	private String username;
 	private String password;
 	private String password2;
 	
+	private TextField<String> nameField;
 	private RequiredTextField<String> usernameField;
 	private PasswordTextField passwordField;
 	private PasswordTextField password2Field;
+	private AjaxLink<Void> cancelNameLink;
+	private AjaxLink<Void> editNameLink;
+	private SubmitLink saveNameLink;
 	private AjaxLink<Void> cancelUsernameLink;
 	private AjaxLink<Void> editUsernameLink;
 	private SubmitLink saveUsernameLink;
@@ -42,6 +48,7 @@ public class ProfilePage extends BasePage {
 	private SubmitLink savePasswordLink;
 	
 	private AjaxRefreshableContainer formContainer;
+	private Form nameForm;
 	private Form usernameForm;
 	private Form passwordForm;
 	
@@ -50,11 +57,77 @@ public class ProfilePage extends BasePage {
 	
 	public ProfilePage() {
 		
+		//---------
+		// feedback
+		//---------
 		add(new FeedbackPanel("feedback"));
 		
+		//----------
+		// container
+		//----------
 		formContainer = new AjaxRefreshableContainer("formContainer");
 		add(formContainer);
+
+		//----------------
+		// name components
+		//----------------
+		nameForm = new Form("nameForm", new CompoundPropertyModel(this));
+		formContainer.add(nameForm);
+
+		nameField = new TextField<>("name");
+		nameForm.add(nameField);
+		nameField.setLabel(new ResourceModel("profile.name"));
+
+		cancelNameLink = new AjaxLink<Void>("cancelName") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				enableNameFields(false);
+				this.send(this, Broadcast.BUBBLE, new AjaxRefreshEvent(target));
+			}
+			
+		};
+		nameForm.add(cancelNameLink);
 		
+		editNameLink = new AjaxLink<Void>("editName") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				name = TasklistSession.get().getUser().getName();
+				enableNameFields(true);
+				this.send(this, Broadcast.BUBBLE, new AjaxRefreshEvent(target));
+			}
+			
+		};
+		nameForm.add(editNameLink);
+		
+		saveNameLink = new SubmitLink("saveName") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onSubmit() {
+				super.onSubmit();
+				
+				User user = userService.getUser(TasklistSession.get().getUser().getId());
+				user.setName(name);
+				userService.updateUser(user);
+				TasklistSession.get().setUser(user);
+				
+				enableNameFields(false);
+				success(getString("profile.save.name.success"));
+			}
+			
+		};
+		nameForm.add(saveNameLink);
+		
+		//--------------------
+		// username components
+		//--------------------
 		usernameForm = new Form("usernameForm", new CompoundPropertyModel(this)) {
 
 			@Override
@@ -120,6 +193,9 @@ public class ProfilePage extends BasePage {
 		};
 		usernameForm.add(saveUsernameLink);
 		
+		//--------------------
+		// password components
+		//--------------------
 		passwordForm = new Form("passwordForm", new CompoundPropertyModel(this)) {
 
 			@Override
@@ -191,16 +267,37 @@ public class ProfilePage extends BasePage {
 		};
 		passwordForm.add(savePasswordLink);
 		
+		//------------
+		// init values
+		//------------
+		name = TasklistSession.get().getUser().getName();
+		username = TasklistSession.get().getUser().getUsername();
+		
+		//--------------------------
+		// disable editing initially
+		//--------------------------
+		enableNameFields(false);
 		enableUsernameFields(false);
 		enablePasswordFields(false);
 	}
 
+	private void enableNameFields(boolean enable) {
+		nameField.setEnabled(enable);
+		cancelNameLink.setEnabled(enable);
+		editNameLink.setEnabled(!enable);
+		saveNameLink.setEnabled(enable);
+		
+		editUsernameLink.setEnabled(!enable);
+		editPasswordLink.setEnabled(!enable);
+	}
+	
 	private void enableUsernameFields(boolean enable) {
 		usernameField.setEnabled(enable);
 		cancelUsernameLink.setEnabled(enable);
 		editUsernameLink.setEnabled(!enable);
 		saveUsernameLink.setEnabled(enable);
 		
+		editNameLink.setEnabled(!enable);
 		editPasswordLink.setEnabled(!enable);
 	}
 	
@@ -211,6 +308,7 @@ public class ProfilePage extends BasePage {
 		editPasswordLink.setEnabled(!enable);
 		savePasswordLink.setEnabled(enable);
 		
+		editNameLink.setEnabled(!enable);
 		editUsernameLink.setEnabled(!enable);
 	}
 	

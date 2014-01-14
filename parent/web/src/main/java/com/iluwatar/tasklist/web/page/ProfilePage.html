@@ -10,6 +10,17 @@
 		<div wicket:id="feedback"/>
 
 		<div wicket:id="formContainer">
+			<form wicket:id="nameForm">
+				<div>
+					<label wicket:for="name"><wicket:message key="profile.name"/>:</label>
+					<input type="text" wicket:id="name"/>
+				</div>
+				<div>
+					<input type="button" class="btn" wicket:id="cancelName" wicket:message="value:profile.name.cancel"/>
+					<input type="button" class="btn" wicket:id="editName" wicket:message="value:profile.name.edit"/>
+					<input type="submit" class="btn" wicket:id="saveName" wicket:message="value:profile.name.save"/>
+				</div>
+			</form>
 			<form wicket:id="usernameForm">
 				<div>
 					<label wicket:for="username"><wicket:message key="profile.username"/>:</label>

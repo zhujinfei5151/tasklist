@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.SubmitLink;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.ResourceModel;
@@ -18,10 +19,12 @@ public class RegisterPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 	
+	private String name;
 	private String username;
 	private String password;
 	private String password2;
 
+	private TextField<String> nameField;
 	private RequiredTextField<String> usernameField;
 	private PasswordTextField passwordField;
 	private PasswordTextField password2Field;
@@ -56,6 +59,10 @@ public class RegisterPage extends BasePage {
 		};
 		add(form);
 		
+		nameField = new TextField<>("name");
+		form.add(nameField);
+		nameField.setLabel(new ResourceModel("register.name"));
+		
 		usernameField = new RequiredTextField<>("username");
 		form.add(usernameField);
 		usernameField.setLabel(new ResourceModel("register.username"));
@@ -78,6 +85,7 @@ public class RegisterPage extends BasePage {
 				User user = new User();
 				user.setUsername(username);
 				user.setPasswordHash(TasklistUtils.md5(password));
+				user.setName(name);
 				userService.addUser(user);
 				TasklistSession.get().success(getString("register.save.success"));
 				setResponsePage(LoginPage.class);
