@@ -2,14 +2,14 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="login.header">Login</entry>
-	<entry key="login.username">Username</entry>
+	<entry key="login.username">Username (email address)</entry>
 	<entry key="login.password">Password</entry>
 	<entry key="login.register">Register</entry>
 	<entry key="login.submit">Login</entry>
 	<entry key="login.failed">Incorrect username or password</entry>
 	<entry key="register.header">Register</entry>
 	<entry key="register.name">Name</entry>
-	<entry key="register.username">Username (valid email address)</entry>
+	<entry key="register.username">Username (email address)</entry>
 	<entry key="register.password">Password</entry>
 	<entry key="register.password2">Retype password</entry>
 	<entry key="register.submit">Register</entry>
@@ -20,7 +20,7 @@
 	<entry key="dashboard.addtasklist">Add new tasklist</entry>
 	<entry key="profile.header">Profile</entry>
 	<entry key="profile.name">Name</entry>
-	<entry key="profile.username">Username</entry>
+	<entry key="profile.username">Username (email address)</entry>
 	<entry key="profile.password">New password</entry>
 	<entry key="profile.password2">New password again</entry>
 	<entry key="profile.name.cancel">Cancel</entry>

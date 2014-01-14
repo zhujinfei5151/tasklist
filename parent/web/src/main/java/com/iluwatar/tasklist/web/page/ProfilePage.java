@@ -14,10 +14,12 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.validator.StringValidator;
 import org.wicketstuff.event.annotation.OnEvent;
 
 import com.iluwatar.tasklist.services.entity.User;
 import com.iluwatar.tasklist.services.service.UserService;
+import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.TasklistSession;
 import com.iluwatar.tasklist.web.TasklistUtils;
 import com.iluwatar.tasklist.web.component.AjaxRefreshableContainer;
@@ -213,10 +215,12 @@ public class ProfilePage extends BasePage {
 		passwordField = new PasswordTextField("password");
 		passwordForm.add(passwordField);
 		passwordField.setLabel(new ResourceModel("profile.password"));
+		passwordField.add(StringValidator.minimumLength(TasklistConstants.PASSWORD_MINIMUM_LENGTH));
 
 		password2Field = new PasswordTextField("password2");
 		passwordForm.add(password2Field);
 		password2Field.setLabel(new ResourceModel("profile.password2"));
+		password2Field.add(StringValidator.minimumLength(TasklistConstants.PASSWORD_MINIMUM_LENGTH));
 		
 		cancelPasswordLink = new AjaxLink<Void>("cancelPassword") {
 
