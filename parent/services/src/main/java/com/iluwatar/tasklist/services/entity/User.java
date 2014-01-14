@@ -30,7 +30,8 @@ public class User implements Serializable {
 	@Column(nullable=false)
 	private String passwordHash;
 	
-	private String name;
+	@Column(nullable=false)
+	private String name = "";
 	
 	@OneToMany(mappedBy="user", orphanRemoval=true)
 	private Set<Tasklist> tasklists;
