@@ -9,7 +9,7 @@
 	<entry key="login.failed">Incorrect username or password</entry>
 	<entry key="register.header">Register</entry>
 	<entry key="register.name">Name</entry>
-	<entry key="register.username">Username</entry>
+	<entry key="register.username">Username (valid email address)</entry>
 	<entry key="register.password">Password</entry>
 	<entry key="register.password2">Retype password</entry>
 	<entry key="register.submit">Register</entry>

@@ -33,7 +33,7 @@ public class ProfilePage extends BasePage {
 	private String password;
 	private String password2;
 	
-	private TextField<String> nameField;
+	private RequiredTextField<String> nameField;
 	private RequiredTextField<String> usernameField;
 	private PasswordTextField passwordField;
 	private PasswordTextField password2Field;
@@ -74,7 +74,7 @@ public class ProfilePage extends BasePage {
 		nameForm = new Form("nameForm", new CompoundPropertyModel(this));
 		formContainer.add(nameForm);
 
-		nameField = new TextField<>("name");
+		nameField = new RequiredTextField<>("name");
 		nameForm.add(nameField);
 		nameField.setLabel(new ResourceModel("profile.name"));
 

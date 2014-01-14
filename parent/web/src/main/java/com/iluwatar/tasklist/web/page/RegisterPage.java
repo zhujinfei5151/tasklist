@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import com.iluwatar.tasklist.services.entity.User;
 import com.iluwatar.tasklist.services.service.UserService;
@@ -24,7 +25,7 @@ public class RegisterPage extends BasePage {
 	private String password;
 	private String password2;
 
-	private TextField<String> nameField;
+	private RequiredTextField<String> nameField;
 	private RequiredTextField<String> usernameField;
 	private PasswordTextField passwordField;
 	private PasswordTextField password2Field;
@@ -59,13 +60,14 @@ public class RegisterPage extends BasePage {
 		};
 		add(form);
 		
-		nameField = new TextField<>("name");
+		nameField = new RequiredTextField<>("name");
 		form.add(nameField);
 		nameField.setLabel(new ResourceModel("register.name"));
 		
 		usernameField = new RequiredTextField<>("username");
 		form.add(usernameField);
 		usernameField.setLabel(new ResourceModel("register.username"));
+		usernameField.add(EmailAddressValidator.getInstance());
 
 		passwordField = new PasswordTextField("password");
 		form.add(passwordField);
