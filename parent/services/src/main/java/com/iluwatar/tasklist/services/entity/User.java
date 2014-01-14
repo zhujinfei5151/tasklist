@@ -30,6 +30,8 @@ public class User implements Serializable {
 	@Column(nullable=false)
 	private String passwordHash;
 	
+	private String name;
+	
 	@OneToMany(mappedBy="user", orphanRemoval=true)
 	private Set<Tasklist> tasklists;
 	
@@ -62,6 +64,14 @@ public class User implements Serializable {
 
 	public void setTasklists(Set<Tasklist> tasklists) {
 		this.tasklists = tasklists;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
