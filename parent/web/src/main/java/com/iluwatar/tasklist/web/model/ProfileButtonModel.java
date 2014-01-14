@@ -12,7 +12,10 @@ public class ProfileButtonModel extends AbstractReadOnlyModel<String> {
 	public String getObject() {
 		String result = "";
 		if (TasklistSession.get().getUser() != null) {
-			result = TasklistSession.get().getUser().getUsername();
+			result = TasklistSession.get().getUser().getName();
+			if (result.equals("")) {
+				result = TasklistSession.get().getUser().getUsername();
+			}
 		}
 		return result;
 	}
