@@ -45,7 +45,18 @@ public class BasePage extends WebPage {
 		navbar.brandName(Model.of("Tasklist"));
 		navbar.fluid();
 
-		NavbarButton homeButton = new NavbarButton(DashboardPage.class, Model.of("Dashboard"));
+		NavbarButton homeButton = new NavbarButton(DashboardPage.class, Model.of("Dashboard")) {
+
+			@Override
+			public boolean isActive(Component button) {
+				if (button.getPage().getClass().equals(DashboardPage.class) ||
+						button.getPage().getClass().equals(CreateTasklistPage.class)) {
+					return true;
+				}
+				return false;
+			}
+			
+		};
 		navbar.addComponents(NavbarComponents.transform(
 				Navbar.ComponentPosition.LEFT,
 				homeButton));
@@ -54,8 +65,10 @@ public class BasePage extends WebPage {
 
 			@Override
 			public boolean isActive(Component button) {
+				// TODO: refactor
 				if (button.getPage().getClass().equals(ViewTasklistPage.class) ||
 						button.getPage().getClass().equals(EditTasklistPage.class) ||
+						button.getPage().getClass().equals(CreateTaskPage.class) ||
 						button.getPage().getClass().equals(ReorderTasklistPage.class)) {
 					return true;
 				}
@@ -66,8 +79,9 @@ public class BasePage extends WebPage {
 		navbar.addComponents(NavbarComponents.transform(
 				Navbar.ComponentPosition.LEFT,
 				tasksButton));
+		// TODO: refactor
 		tasksButton.add(new VisibleWhenCurrentPageOfTypeBehavior(ViewTasklistPage.class, 
-				EditTasklistPage.class, ReorderTasklistPage.class));
+				EditTasklistPage.class, CreateTaskPage.class, ReorderTasklistPage.class));
 		
 		NavbarButton profileButton = new NavbarButton(ProfilePage.class, new ProfileButtonModel());
 		navbar.addComponents(NavbarComponents.transform(

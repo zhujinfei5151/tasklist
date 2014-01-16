@@ -48,6 +48,7 @@ public class CreateTaskPage extends BasePage {
 		if (tl == null) {
 			throw new RestartResponseException(TasklistApplication.get().getHomePage());
 		}
+		tasklistNameModel.setObject(tl.getName());
 		
 		
 		//------------------
