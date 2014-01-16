@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -65,6 +66,20 @@ public class CreateTaskPage extends BasePage {
 		
 		final CheckBox cb = new CheckBox("createanother", Model.of(false));
 		form.add(cb);
+		
+		Link<Void> backLink = new Link<Void>("back") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				PageParameters params = new PageParameters();
+				params.add(TasklistConstants.PAGE_PARAM_TASKLIST_ID, tasklistId);
+				setResponsePage(ViewTasklistPage.class, params);
+			}
+			
+		};
+		form.add(backLink);
 		
 		SubmitLink submitLink = new SubmitLink("submit") {
 

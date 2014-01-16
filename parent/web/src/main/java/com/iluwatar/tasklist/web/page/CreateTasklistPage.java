@@ -5,14 +5,17 @@ import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import com.iluwatar.tasklist.services.entity.Tasklist;
 import com.iluwatar.tasklist.services.service.TaskService;
+import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.TasklistSession;
 
 @AuthorizeInstantiation("USER")
@@ -39,6 +42,18 @@ public class CreateTasklistPage extends BasePage {
 		
 		final CheckBox cb = new CheckBox("createanother", Model.of(false));
 		form.add(cb);
+
+		Link<Void> backLink = new Link<Void>("back") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(DashboardPage.class);
+			}
+			
+		};
+		form.add(backLink);
 		
 		SubmitLink submitLink = new SubmitLink("submit") {
 
