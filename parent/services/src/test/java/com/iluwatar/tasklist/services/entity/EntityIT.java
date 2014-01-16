@@ -59,7 +59,9 @@ public class EntityIT {
 			EntityIT test = new EntityIT();
 
 			User u = new User();
+			u.setName("Jukka Kukkanen");
 			u.setUsername("jukka");
+			u.setSalt("edfaetrqwt");
 			u.setPasswordHash("235gdsGDGw3ga342");
 			test.createUser(u);
 			

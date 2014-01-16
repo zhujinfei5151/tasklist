@@ -37,8 +37,11 @@ public class TasklistSession extends AuthenticatedWebSession {
 	@Override
 	public boolean authenticate(String username, String password) {
 
-		String hash = TasklistUtils.md5(password);
-		logger.info("hash={}", hash);
+		User u = userService.getUserByUsername(username);
+		if (u == null) {
+			return false;
+		}
+		String hash = TasklistUtils.md5(password + u.getSalt());
 		
 		if (userService.loginUser(username, hash)) {
 			user = userService.getUserByUsername(username);

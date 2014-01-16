@@ -33,7 +33,7 @@ public class LoginIT extends BaseServiceIT {
 	@Test
 	public void testLogin() {
 		
-		boolean result = userService.loginUser("matti", "38fe8951595f01a3c16f3d50ea0bcc53");
+		boolean result = userService.loginUser("matti@mainio.com", "3ead6bf70f902e0c408abfd4d3e2501f");
 		assertEquals(result, true);
 		
 	}

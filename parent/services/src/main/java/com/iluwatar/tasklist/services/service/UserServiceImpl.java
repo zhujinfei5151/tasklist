@@ -1,5 +1,7 @@
 package com.iluwatar.tasklist.services.service;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Collection;
 
 import javax.annotation.Resource;
@@ -54,6 +56,12 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void updateUser(User user) {
 		userDao.updateUser(user);
+	}
+
+	@Override
+	public String generateSalt() {
+		SecureRandom random = new SecureRandom();
+		return new BigInteger(130, random).toString(32);
 	}
 
 }

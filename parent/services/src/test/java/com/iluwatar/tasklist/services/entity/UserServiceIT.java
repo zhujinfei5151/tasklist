@@ -46,6 +46,7 @@ public class UserServiceIT extends BaseServiceIT {
 		
 		User u = new User();
 		u.setUsername("jaska");
+		u.setSalt("asdfasdf");
 		u.setPasswordHash("adfasf3345345sdfasg435345");
 		userService.addUser(u);
 
@@ -78,13 +79,13 @@ public class UserServiceIT extends BaseServiceIT {
 
 		User user = userService.getUser(1);
 		assertNotNull(user);
-		assertEquals(user.getUsername(), "matti");
+		assertEquals(user.getUsername(), "matti@mainio.com");
 		
-		user.setUsername("pekka");
+		user.setUsername("pekka@pellervo.com");
 		userService.updateUser(user);
 		
 		User updatedUser = userService.getUser(1);
-		assertEquals(updatedUser.getUsername(), "pekka");
+		assertEquals(updatedUser.getUsername(), "pekka@pellervo.com");
 		
 	}
 	

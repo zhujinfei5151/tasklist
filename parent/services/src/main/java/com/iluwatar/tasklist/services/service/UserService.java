@@ -25,5 +25,6 @@ public interface UserService {
 	
 	// TODO: test
 	boolean loginUser(String username, String passwordHash);
-	
+
+	String generateSalt();
 }

@@ -1,1 +1,1 @@
-insert into `user` (id, passwordHash, username, name) values (1, "38fe8951595f01a3c16f3d50ea0bcc53", "matti", "Matti Mainio");
+insert into `user` (id, passwordHash, username, name, salt) values (1, "3ead6bf70f902e0c408abfd4d3e2501f", "matti@mainio.com", "Matti Mainio", "abcdeabcdeabcdeabcdeabcdeabcde12");

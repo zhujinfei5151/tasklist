@@ -90,7 +90,8 @@ public class RegisterPage extends BasePage {
 				super.onSubmit();
 				User user = new User();
 				user.setUsername(username);
-				user.setPasswordHash(TasklistUtils.md5(password));
+				user.setSalt(userService.generateSalt());
+				user.setPasswordHash(TasklistUtils.md5(password + user.getSalt()));
 				user.setName(name);
 				userService.addUser(user);
 				TasklistSession.get().success(getString("register.save.success"));

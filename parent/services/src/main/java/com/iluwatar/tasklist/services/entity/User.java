@@ -31,6 +31,9 @@ public class User implements Serializable {
 	private String passwordHash;
 	
 	@Column(nullable=false)
+	private String salt;
+	
+	@Column(nullable=false)
 	private String name = "";
 	
 	@OneToMany(mappedBy="user", orphanRemoval=true)
@@ -73,6 +76,14 @@ public class User implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 }
