@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public void clearUsers() {
-		Query q = em.createQuery("select u from User u");
+		Query q = em.createNamedQuery("User.findAll");
 		List<User> users = q.getResultList();
 		for (User u: users) {
 			em.remove(u);
@@ -35,22 +35,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public Collection<User> findAll() {
-		Query q = em.createQuery("select u from User u");
+		Query q = em.createNamedQuery("User.findAll");
 		List<User> users = q.getResultList();
 		return users;
 	}
 
 	public User getUser(int userId) {
-		Query userQuery = em.createQuery("select u from User u where u.id=:userId");
-		userQuery.setParameter("userId", userId);
-		try {
-			User u = (User) userQuery.getSingleResult();
-			return u;
-		}
-		catch (NoResultException e) {
-			e.printStackTrace();
-			return null;
-		}
+		return em.find(User.class, userId);
 	}
 
 	public boolean loginUser(String username, String passwordHash) {

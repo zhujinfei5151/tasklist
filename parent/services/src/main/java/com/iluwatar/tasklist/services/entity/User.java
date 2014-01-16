@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,6 +16,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
+@NamedQuery(name="User.findAll", query="select u from User u") 
 @Table(name="user", schema="tasklist")
 public class User implements Serializable {
 	
