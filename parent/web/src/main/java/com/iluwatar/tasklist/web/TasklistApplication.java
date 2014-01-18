@@ -51,6 +51,8 @@ public class TasklistApplication extends AuthenticatedWebApplication
 		
 		Bootstrap.install(this, new BootstrapSettings());
 		BootstrapLess.install(this);
+		
+		this.getMarkupSettings().setStripWicketTags(true);
 	}
 	
 	protected SpringComponentInjector newInjector() {

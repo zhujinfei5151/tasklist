@@ -22,6 +22,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValue;
 import org.wicketstuff.event.annotation.OnEvent;
 
+import com.googlecode.wicket.jquery.core.JQueryBehavior;
+import com.googlecode.wicket.jquery.ui.effect.JQueryEffectBehavior;
 import com.iluwatar.tasklist.services.entity.Task;
 import com.iluwatar.tasklist.services.entity.Tasklist;
 import com.iluwatar.tasklist.services.service.TaskService;
@@ -45,6 +47,9 @@ public class ViewTasklistPage extends BasePage {
 	
 	private int tasklistId;
 	
+	private AjaxRefreshableContainer notCompletedContainer;
+	private AjaxRefreshableContainer completedContainer;
+	
 	public ViewTasklistPage(PageParameters params) {
 		
 		super(params);
@@ -66,8 +71,11 @@ public class ViewTasklistPage extends BasePage {
 		//--------------------
 		// not completed tasks
 		//--------------------
-		AjaxRefreshableContainer notCompletedContainer = new AjaxRefreshableContainer("notcompletedcontainer");
+		
+		notCompletedContainer = new AjaxRefreshableContainer("notcompletedcontainer");
 		add(notCompletedContainer);
+		notCompletedContainer.setOutputMarkupId(true);
+		add(new JQueryBehavior("#" + notCompletedContainer.getMarkupId(), "effect"));
 
 		Form<Void> notCompletedForm = new Form<>("notcompletedform");
 		notCompletedContainer.add(notCompletedForm);
@@ -90,24 +98,15 @@ public class ViewTasklistPage extends BasePage {
 					protected void onUpdate(AjaxRequestTarget target) {
 						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
 						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+						
+						JQueryEffectBehavior effectBehavior = new JQueryEffectBehavior("#" + completedContainer.getMarkupId(), "highlight");
+						target.appendJavaScript(effectBehavior.toString());
 					}
 					
 				});
 
 				Label notCompletedDescription = new Label("notcompleteddescription", item.getModelObject().getDescription());
 				item.add(notCompletedDescription);
-//				notCompletedDescription.add(new AjaxEventBehavior("click") {
-//
-//					private static final long serialVersionUID = 1L;
-//
-//					@Override
-//					protected void onEvent(AjaxRequestTarget target) {
-//						checkModel.setObject(!checkModel.getObject());
-//						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-//						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
-//					}
-//					
-//				});
 				
 			}
 			
@@ -170,8 +169,9 @@ public class ViewTasklistPage extends BasePage {
 		//----------------
 		// completed tasks
 		//----------------
-		AjaxRefreshableContainer completedContainer = new AjaxRefreshableContainer("completedcontainer");
+		completedContainer = new AjaxRefreshableContainer("completedcontainer");
 		add(completedContainer);
+		completedContainer.setOutputMarkupId(true);
 
 		Form<Void> completedForm = new Form<>("completedform");
 		completedContainer.add(completedForm);
@@ -194,6 +194,9 @@ public class ViewTasklistPage extends BasePage {
 					protected void onUpdate(AjaxRequestTarget target) {
 						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
 						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+						
+						JQueryEffectBehavior effectBehavior = new JQueryEffectBehavior("#" + notCompletedContainer.getMarkupId(), "highlight");
+						target.appendJavaScript(effectBehavior.toString());
 					}
 					
 				});
@@ -202,19 +205,6 @@ public class ViewTasklistPage extends BasePage {
 				String desc = "(" + dt.format(item.getModelObject().getDonedate()) + ") " + item.getModelObject().getDescription();
 				Label completedDescription = new Label("completeddescription", desc);
 				item.add(completedDescription);
-				
-//				completedDescription.add(new AjaxEventBehavior("click") {
-//
-//					private static final long serialVersionUID = 1L;
-//
-//					@Override
-//					protected void onEvent(AjaxRequestTarget target) {
-//						checkModel.setObject(!checkModel.getObject());
-//						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-//						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
-//					}
-//					
-//				});
 				
 			}
 			
