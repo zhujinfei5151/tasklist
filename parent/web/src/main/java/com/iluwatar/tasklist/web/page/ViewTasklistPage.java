@@ -96,18 +96,18 @@ public class ViewTasklistPage extends BasePage {
 
 				Label notCompletedDescription = new Label("notcompleteddescription", item.getModelObject().getDescription());
 				item.add(notCompletedDescription);
-				notCompletedDescription.add(new AjaxEventBehavior("click") {
-
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					protected void onEvent(AjaxRequestTarget target) {
-						checkModel.setObject(!checkModel.getObject());
-						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
-					}
-					
-				});
+//				notCompletedDescription.add(new AjaxEventBehavior("click") {
+//
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					protected void onEvent(AjaxRequestTarget target) {
+//						checkModel.setObject(!checkModel.getObject());
+//						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
+//						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+//					}
+//					
+//				});
 				
 			}
 			
@@ -203,18 +203,18 @@ public class ViewTasklistPage extends BasePage {
 				Label completedDescription = new Label("completeddescription", desc);
 				item.add(completedDescription);
 				
-				completedDescription.add(new AjaxEventBehavior("click") {
-
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					protected void onEvent(AjaxRequestTarget target) {
-						checkModel.setObject(!checkModel.getObject());
-						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
-						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
-					}
-					
-				});
+//				completedDescription.add(new AjaxEventBehavior("click") {
+//
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					protected void onEvent(AjaxRequestTarget target) {
+//						checkModel.setObject(!checkModel.getObject());
+//						AjaxRefreshEvent e = new AjaxRefreshEvent(target);
+//						this.getComponent().send(this.getComponent().getPage(), Broadcast.BREADTH, e);
+//					}
+//					
+//				});
 				
 			}
 			
