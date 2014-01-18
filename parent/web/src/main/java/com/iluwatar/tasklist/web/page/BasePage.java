@@ -104,7 +104,6 @@ public class BasePage extends WebPage {
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
-		response.render(JavaScriptHeaderItem.forReference(getApplication().getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(CssHeaderItem.forReference(new LessResourceReference(this.getClass(), "style.less")));
 	}
 	
