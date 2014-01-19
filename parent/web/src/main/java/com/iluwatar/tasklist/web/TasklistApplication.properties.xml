@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="login.header">Login</entry>
+	<entry key="login.hero.header">Task tracking made easy</entry>
+	<entry key="login.hero.tagline">Shopping list, todo list or any kind of checklist absolutely simple and free</entry>
+	<entry key="login.hero.register">Register</entry>
 	<entry key="login.username">Username (email address)</entry>
 	<entry key="login.password">Password</entry>
-	<entry key="login.register">Register</entry>
 	<entry key="login.submit">Login</entry>
 	<entry key="login.failed">Incorrect username or password</entry>
 	<entry key="register.header">Register</entry>

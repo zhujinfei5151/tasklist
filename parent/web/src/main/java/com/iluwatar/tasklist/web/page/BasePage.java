@@ -11,6 +11,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.TasklistSession;
 import com.iluwatar.tasklist.web.behavior.VisibleWhenCurrentPageOfTypeBehavior;
 import com.iluwatar.tasklist.web.behavior.VisibleWhenLoggedInBehavior;
@@ -46,7 +47,7 @@ public class BasePage extends WebPage {
 		Navbar navbar = new Navbar("navbar");
 		add(navbar);
 		navbar.setPosition(Position.TOP);
-		navbar.brandName(Model.of("Tasklist"));
+		navbar.brandName(Model.of(TasklistConstants.APP_NAME));
 		navbar.fluid();
 
 		NavbarButton homeButton = new NavbarButton(DashboardPage.class, Model.of("Dashboard")) {

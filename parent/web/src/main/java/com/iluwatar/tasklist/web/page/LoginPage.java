@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
 	public LoginPage(final PageParameters parameters) {
 		super(parameters);
 
-		titleModel.setObject(getString("login.header"));
+		titleModel.setObject("");
 		
         add(new FeedbackPanel("feedback"));
 		
@@ -49,17 +49,6 @@ public class LoginPage extends BasePage {
 	        add(passwordField);
 	        passwordField.setLabel((IModel<String>) passwordLabel.getDefaultModel());
 	        
-	        Link<Void> registerLink = new Link<Void>("register") {
-
-				private static final long serialVersionUID = 1L;
-
-				@Override
-				public void onClick() {
-					setResponsePage(RegisterPage.class);
-				}
-	        	
-	        };
-	        add(registerLink);
 	    }
 	 
 	    @Override

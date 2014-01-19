@@ -9,6 +9,18 @@
 
 	<wicket:extend>
 
+		<div class="hero-unit">
+			<h1><wicket:message key="login.hero.header"/></h1>
+			<p><wicket:message key="login.hero.tagline"/></p>
+			<p>
+				<wicket:link>
+			    	<a href="RegisterPage.html" class="btn btn-primary btn-large">
+			      		<wicket:message key="login.hero.register"/>
+			    	</a>
+		    	</wicket:link>
+		  	</p>
+		</div>
+
         <div wicket:id="feedback"/>
 
 		<form wicket:id="loginForm">
@@ -21,7 +33,6 @@
 	        	<input type="password" wicket:id="password" />
 	        </div>
 	        <div>
-	        	<input type="button" wicket:message="value:login.register" class="btn" wicket:id="register" />
 	        	<input type="submit" wicket:message="value:login.submit" class="btn" />
 	 		</div>
 	    </form>
