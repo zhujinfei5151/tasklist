@@ -1,5 +1,7 @@
 package com.iluwatar.tasklist.web;
 
+import java.util.List;
+
 import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
@@ -15,7 +17,11 @@ import com.iluwatar.tasklist.web.page.LoginPage;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.ITheme;
+import de.agilecoders.wicket.core.settings.ThemeProvider;
 import de.agilecoders.wicket.less.BootstrapLess;
+import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
+import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -49,7 +55,20 @@ public class TasklistApplication extends AuthenticatedWebApplication
 		getBehaviorInstantiationListeners().add(spring);
 		spring.inject(this);
 		
-		Bootstrap.install(this, new BootstrapSettings());
+		BootstrapSettings settings = new BootstrapSettings();
+		
+        ThemeProvider themeProvider = new BootswatchThemeProvider() {{
+            add(new MetroTheme());
+            defaultTheme("readable");
+        }};
+        settings.setThemeProvider(themeProvider);
+        List<ITheme> themes = themeProvider.available();
+        for (ITheme theme: themes) {
+            logger.info("available theme: " + theme.name());
+        }
+        settings.setThemeProvider(themeProvider);        
+		
+		Bootstrap.install(this, settings);
 		BootstrapLess.install(this);
 		
 		this.getMarkupSettings().setStripWicketTags(true);
