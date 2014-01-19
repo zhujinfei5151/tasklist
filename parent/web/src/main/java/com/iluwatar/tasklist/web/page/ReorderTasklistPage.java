@@ -53,6 +53,8 @@ public class ReorderTasklistPage extends BasePage {
 		//-----------
 		// components
 		//-----------
+
+		titleModel.setObject(getString("reordertasklist.header"));
 		
 		final FeedbackPanel feedback = new FeedbackPanel("feedback");
 		add(feedback);

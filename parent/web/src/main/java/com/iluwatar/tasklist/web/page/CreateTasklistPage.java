@@ -30,6 +30,8 @@ public class CreateTasklistPage extends BasePage {
 	
 	public CreateTasklistPage() {
 		
+		titleModel.setObject(getString("createtasklist.header"));
+		
 		add(new FeedbackPanel("feedback"));
 		
 		Form<Void> form = new Form<>("form");

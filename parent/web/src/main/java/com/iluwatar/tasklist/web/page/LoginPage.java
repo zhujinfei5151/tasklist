@@ -17,6 +17,8 @@ public class LoginPage extends BasePage {
 	public LoginPage(final PageParameters parameters) {
 		super(parameters);
 
+		titleModel.setObject(getString("login.header"));
+		
         add(new FeedbackPanel("feedback"));
 		
 		final LoginForm form = new LoginForm("loginForm");

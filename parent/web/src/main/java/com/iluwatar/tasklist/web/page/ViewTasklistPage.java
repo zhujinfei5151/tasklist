@@ -71,6 +71,8 @@ public class ViewTasklistPage extends BasePage {
 		//--------------------
 		// not completed tasks
 		//--------------------
+
+		titleModel.setObject(getString("viewtasklist.header"));
 		
 		notCompletedContainer = new AjaxRefreshableContainer("notcompletedcontainer");
 		add(notCompletedContainer);

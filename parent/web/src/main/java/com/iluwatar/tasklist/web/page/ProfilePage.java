@@ -58,6 +58,8 @@ public class ProfilePage extends BasePage {
 	private UserService userService;
 	
 	public ProfilePage() {
+
+		titleModel.setObject(getString("profile.header"));
 		
 		//---------
 		// feedback

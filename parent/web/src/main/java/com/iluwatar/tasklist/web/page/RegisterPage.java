@@ -37,6 +37,8 @@ public class RegisterPage extends BasePage {
 	private UserService userService;
 	
 	public RegisterPage() {
+
+		titleModel.setObject(getString("register.header"));
 		
 		FeedbackPanel feedback = new FeedbackPanel("feedback");
 		add(feedback);

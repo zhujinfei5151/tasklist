@@ -26,6 +26,8 @@ public class DashboardPage extends BasePage {
 	
 	public DashboardPage() {
 		super();
+		
+		titleModel.setObject(getString("dashboard.header"));
 
 		add(new Link<Void>("addtasklist") {
 

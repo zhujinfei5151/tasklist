@@ -54,6 +54,8 @@ public class CreateTaskPage extends BasePage {
 		//------------------
 		// create components
 		//------------------
+
+		titleModel.setObject(getString("createtask.header"));
 		
 		add(new FeedbackPanel("feedback"));
 		

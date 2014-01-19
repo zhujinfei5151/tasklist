@@ -6,6 +6,7 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -28,6 +29,7 @@ public class BasePage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 	
+	protected IModel<String> titleModel = Model.of("");
 	protected IModel<String> tasklistNameModel = Model.of("");
 
 	public BasePage() {
@@ -100,6 +102,7 @@ public class BasePage extends WebPage {
 		logoutButton.add(new VisibleWhenLoggedInBehavior());
 		logoutButton.setIconType(IconType.off);
 		
+		add(new Label("title", titleModel));
 	}
 
 	@Override

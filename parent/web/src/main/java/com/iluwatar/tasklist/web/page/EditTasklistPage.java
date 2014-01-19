@@ -59,6 +59,8 @@ public class EditTasklistPage extends BasePage {
 		}
 		tasklistNameModel.setObject(tl.getName());
 
+		titleModel.setObject(getString("edittasklist.header"));
+		
 		AjaxRefreshableContainer container = new AjaxRefreshableContainer("container");
 		add(container);
 
