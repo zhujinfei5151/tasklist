@@ -15,6 +15,7 @@ import com.iluwatar.tasklist.web.behavior.VisibleWhenCurrentPageOfTypeBehavior;
 import com.iluwatar.tasklist.web.behavior.VisibleWhenLoggedInBehavior;
 import com.iluwatar.tasklist.web.model.ProfileButtonModel;
 
+import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.Position;
@@ -104,6 +105,7 @@ public class BasePage extends WebPage {
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
+		response.render(JavaScriptHeaderItem.forReference(Bootstrap.getSettings().getJsResourceReference()));
 		response.render(CssHeaderItem.forReference(new LessResourceReference(this.getClass(), "style.less")));
 	}
 	
