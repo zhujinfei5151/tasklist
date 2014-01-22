@@ -146,6 +146,9 @@
 		
 	</dependencies>
 	<build>
+	
+		<finalName>freetasklist</finalName>
+	
 		<resources>
 			<resource>
 				<filtering>false</filtering>
