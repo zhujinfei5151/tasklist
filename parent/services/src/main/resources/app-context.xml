@@ -24,6 +24,8 @@
 		<property name="username" value="${jdbc.mysql.username}" />
 		<property name="password" value="${jdbc.mysql.password}" />
 		<property name="initialSize" value="5" />
+		<property name="validationQuery" value="select 1" />
+		<property name="testOnBorrow" value="true" />
 	</bean>
 	
 	<!-- Add transaction manager here -->
