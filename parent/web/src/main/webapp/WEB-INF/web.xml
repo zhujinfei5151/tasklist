@@ -10,6 +10,11 @@
         <param-value>classpath:app-context.xml</param-value>
     </context-param>
 
+	<context-param>
+		<param-name>configuration</param-name>
+		<param-value>deployment</param-value>
+	</context-param>
+
 	<listener>
 	  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
