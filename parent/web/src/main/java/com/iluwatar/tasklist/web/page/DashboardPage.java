@@ -14,8 +14,6 @@ import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.TasklistSession;
 import com.iluwatar.tasklist.web.model.UserTasklistsLDM;
 
-// 3. remove tasklist
-
 @AuthorizeInstantiation("USER")
 public class DashboardPage extends BasePage {
 
