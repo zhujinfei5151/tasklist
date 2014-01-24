@@ -11,6 +11,8 @@ import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.StringValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.iluwatar.tasklist.services.entity.User;
 import com.iluwatar.tasklist.services.service.UserService;
@@ -21,6 +23,8 @@ import com.iluwatar.tasklist.web.TasklistUtils;
 public class RegisterPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
+
+	final static Logger logger = LoggerFactory.getLogger(RegisterPage.class);
 	
 	private String name;
 	private String username;
@@ -96,6 +100,7 @@ public class RegisterPage extends BasePage {
 				user.setPasswordHash(TasklistUtils.md5(password + user.getSalt()));
 				user.setName(name);
 				userService.addUser(user);
+				logger.info("registered new user with username " + username);
 				TasklistSession.get().success(getString("register.save.success"));
 				setResponsePage(LoginPage.class);
 			}

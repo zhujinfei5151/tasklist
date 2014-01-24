@@ -1,7 +1,5 @@
 package com.iluwatar.tasklist.web;
 
-import java.security.MessageDigest;
-
 import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
@@ -36,18 +34,23 @@ public class TasklistSession extends AuthenticatedWebSession {
 
 	@Override
 	public boolean authenticate(String username, String password) {
+		
+		logger.info("user " + username + " authenticating");
 
 		User u = userService.getUserByUsername(username);
 		if (u == null) {
+			logger.info("username not found");
 			return false;
 		}
 		String hash = TasklistUtils.md5(password + u.getSalt());
 		
 		if (userService.loginUser(username, hash)) {
 			user = userService.getUserByUsername(username);
+			logger.info("login successful");
 			return true;
 		}
 		else {
+			logger.info("login failed");
 			return false;
 		}
 
@@ -72,6 +75,7 @@ public class TasklistSession extends AuthenticatedWebSession {
 
 	@Override
 	public void signOut() {
+		logger.info("log out " + user.getUsername());
 		this.user = null;
 		super.signOut();
 	}	

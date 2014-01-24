@@ -16,6 +16,8 @@ import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.StringValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.wicketstuff.event.annotation.OnEvent;
 
 import com.iluwatar.tasklist.services.entity.User;
@@ -30,6 +32,8 @@ import com.iluwatar.tasklist.web.event.AjaxRefreshEvent;
 public class ProfilePage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
+
+	final static Logger logger = LoggerFactory.getLogger(ProfilePage.class);
 	
 	private String name;
 	private String username;
@@ -188,9 +192,12 @@ public class ProfilePage extends BasePage {
 				super.onSubmit();
 				
 				User user = userService.getUser(TasklistSession.get().getUser().getId());
+				String oldUsername = user.getUsername();
 				user.setUsername(username);
 				userService.updateUser(user);
 				TasklistSession.get().setUser(user);
+				
+				logger.info("changed username from " + oldUsername + " to " + username);
 				
 				enableUsernameFields(false);
 				success(getString("profile.save.username.success"));
@@ -267,6 +274,8 @@ public class ProfilePage extends BasePage {
 				user.setPasswordHash(TasklistUtils.md5(password));
 				userService.updateUser(user);
 				TasklistSession.get().setUser(user);
+				
+				logger.info("changed password for user " + user.getUsername());
 				
 				enablePasswordFields(false);
 				success(getString("profile.save.password.success"));

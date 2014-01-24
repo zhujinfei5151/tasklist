@@ -50,6 +50,8 @@ public class TasklistApplication extends AuthenticatedWebApplication
 	{
 		super.init();
 
+		logger.info("application init");
+		
         SpringComponentInjector spring = newInjector();
 		getComponentInstantiationListeners().add(spring);
 		getBehaviorInstantiationListeners().add(spring);
@@ -72,6 +74,8 @@ public class TasklistApplication extends AuthenticatedWebApplication
 		BootstrapLess.install(this);
 		
 		this.getMarkupSettings().setStripWicketTags(true);
+		
+		logger.info("application init complete");
 	}
 	
 	protected SpringComponentInjector newInjector() {
