@@ -9,11 +9,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class HomePageIT extends TestCase {
 	
 	@Test
-    public void testSomething() throws InterruptedException {
+    public void testLoadFrontpage() throws InterruptedException {
     	
     	WebDriver driver = new FirefoxDriver();
     	driver.get("http://localhost:8080");
-    	assertEquals(driver.getTitle(), "Tasklist");
+    	assertEquals(driver.getTitle(), "Freetasklist.com");
     	driver.quit();
         
     }	
