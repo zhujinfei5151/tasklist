@@ -14,6 +14,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 import org.wicketstuff.event.annotation.OnEvent;
 
@@ -149,6 +150,7 @@ public class ProfilePage extends BasePage {
 		usernameField = new RequiredTextField<>("username");
 		usernameForm.add(usernameField);
 		usernameField.setLabel(new ResourceModel("profile.username"));
+		usernameField.add(EmailAddressValidator.getInstance());
 
 		cancelUsernameLink = new AjaxLink<Void>("cancelUsername") {
 
