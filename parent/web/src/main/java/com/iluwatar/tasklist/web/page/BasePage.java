@@ -51,7 +51,7 @@ public class BasePage extends WebPage {
 		navbar.brandName(new ResourceModel("app.name"));
 		navbar.fluid();
 
-		NavbarButton homeButton = new NavbarButton(DashboardPage.class, Model.of("Dashboard")) {
+		NavbarButton homeButton = new NavbarButton(DashboardPage.class, new ResourceModel("app.home")) {
 
 			@Override
 			public boolean isActive(Component button) {
