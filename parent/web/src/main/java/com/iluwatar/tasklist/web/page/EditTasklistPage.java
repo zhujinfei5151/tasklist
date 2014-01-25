@@ -111,6 +111,8 @@ public class EditTasklistPage extends BasePage {
 			@Override
 			public void onClick() {
 				taskService.removeTasklist(tasklistId);
+				String msg = String.format(getString("edittasklist.removed"), tasklistNameModel.getObject());
+				getSession().success(msg);
 				setResponsePage(TasklistApplication.get().getHomePage());
 			}
 			

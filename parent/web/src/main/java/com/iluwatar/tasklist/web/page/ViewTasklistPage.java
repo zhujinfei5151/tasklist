@@ -16,6 +16,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -34,8 +35,6 @@ import com.iluwatar.tasklist.web.event.AjaxRefreshEvent;
 import com.iluwatar.tasklist.web.model.TaskCheckModel;
 import com.iluwatar.tasklist.web.model.TasklistTasksCompletedLDM;
 import com.iluwatar.tasklist.web.model.TasklistTasksNotCompletedLDM;
-
-// move to edit tasklist page
 
 @AuthorizeInstantiation("USER")
 public class ViewTasklistPage extends BasePage {
@@ -73,6 +72,8 @@ public class ViewTasklistPage extends BasePage {
 		//--------------------
 
 		titleModel.setObject(getString("viewtasklist.header"));
+
+		add(new FeedbackPanel("feedback"));
 		
 		notCompletedContainer = new AjaxRefreshableContainer("notcompletedcontainer");
 		add(notCompletedContainer);

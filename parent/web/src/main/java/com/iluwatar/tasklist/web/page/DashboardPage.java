@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -27,6 +28,8 @@ public class DashboardPage extends BasePage {
 		
 		titleModel.setObject(getString("dashboard.header"));
 
+		add(new FeedbackPanel("feedback"));
+		
 		add(new Link<Void>("addtasklist") {
 
 			private static final long serialVersionUID = 1L;

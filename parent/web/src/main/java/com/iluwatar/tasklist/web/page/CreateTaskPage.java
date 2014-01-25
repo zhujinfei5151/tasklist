@@ -99,12 +99,15 @@ public class CreateTaskPage extends BasePage {
 				Task task = new Task();
 				task.setDescription(descriptionModel.getObject());
 				taskService.addTask(tasklistId, task);
+				String msg = String.format(getString("createtask.created"), descriptionModel.getObject());
 				if (!(boolean) cb.getDefaultModelObject()) {
+					getSession().success(msg);
 					PageParameters params = new PageParameters();
 					params.add(TasklistConstants.PAGE_PARAM_TASKLIST_ID, tasklistId);
 					setResponsePage(ViewTasklistPage.class, params);
 				}
 				else {
+					success(msg);
 					descriptionModel.setObject("");
 				}
 			}

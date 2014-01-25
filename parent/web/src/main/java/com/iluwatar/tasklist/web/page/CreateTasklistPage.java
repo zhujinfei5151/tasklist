@@ -73,10 +73,13 @@ public class CreateTasklistPage extends BasePage {
 				Tasklist tl = new Tasklist();
 				tl.setName(nameModel.getObject());
 				taskService.addTasklist(userId, tl);
+				String msg = String.format(getString("createtasklist.created"), nameModel.getObject());
 				if (!(boolean) cb.getDefaultModelObject()) {
+					getSession().success(msg);
 					setResponsePage(DashboardPage.class);
 				}
 				else {
+					success(msg);
 					nameModel.setObject("");
 				}
 			}
