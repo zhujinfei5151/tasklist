@@ -12,8 +12,15 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.iluwatar.tasklist.web.page.CreateTaskPage;
+import com.iluwatar.tasklist.web.page.CreateTasklistPage;
 import com.iluwatar.tasklist.web.page.DashboardPage;
+import com.iluwatar.tasklist.web.page.EditTasklistPage;
 import com.iluwatar.tasklist.web.page.LoginPage;
+import com.iluwatar.tasklist.web.page.ProfilePage;
+import com.iluwatar.tasklist.web.page.RegisterPage;
+import com.iluwatar.tasklist.web.page.ReorderTasklistPage;
+import com.iluwatar.tasklist.web.page.ViewTasklistPage;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
@@ -74,6 +81,16 @@ public class TasklistApplication extends AuthenticatedWebApplication
 		BootstrapLess.install(this);
 		
 		this.getMarkupSettings().setStripWicketTags(true);
+		
+		mountPage("/login", LoginPage.class);
+		mountPage("/register", RegisterPage.class);
+		mountPage("/profile", ProfilePage.class);
+		mountPage("/newtask", CreateTaskPage.class);
+		mountPage("/newtasklist", CreateTasklistPage.class);
+		mountPage("/home", DashboardPage.class);
+		mountPage("/edit", EditTasklistPage.class);
+		mountPage("/reorder", ReorderTasklistPage.class);
+		mountPage("/tasklist", ViewTasklistPage.class);
 		
 		logger.info("application init complete");
 	}
