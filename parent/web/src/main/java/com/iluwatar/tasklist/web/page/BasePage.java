@@ -2,6 +2,7 @@ package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.devutils.debugbar.DebugBar;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -45,6 +46,10 @@ public class BasePage extends WebPage {
 	}
 
 	private void init() {
+		
+		DebugBar debug = new DebugBar("debug");
+		add(debug);
+		
 		Navbar navbar = new Navbar("navbar");
 		add(navbar);
 		navbar.setPosition(Position.TOP);
