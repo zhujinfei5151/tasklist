@@ -9,6 +9,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.event.Broadcast;
+import org.apache.wicket.extensions.markup.html.basic.SmartLinkLabel;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -108,7 +109,7 @@ public class ViewTasklistPage extends BasePage {
 					
 				});
 
-				Label notCompletedDescription = new Label("notcompleteddescription", item.getModelObject().getDescription());
+				Label notCompletedDescription = new SmartLinkLabel("notcompleteddescription", item.getModelObject().getDescription());
 				item.add(notCompletedDescription);
 				
 			}
@@ -206,7 +207,7 @@ public class ViewTasklistPage extends BasePage {
 
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 				String desc = "(" + dt.format(item.getModelObject().getDonedate()) + ") " + item.getModelObject().getDescription();
-				Label completedDescription = new Label("completeddescription", desc);
+				Label completedDescription = new SmartLinkLabel("completeddescription", desc);
 				item.add(completedDescription);
 				
 			}
