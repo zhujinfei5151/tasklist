@@ -60,13 +60,11 @@
 	
 	<bean id="initializer" class="com.iluwatar.tasklist.services.initializer.TasklistInitializerBean" />
 
-<!--  
 	<jdbc:initialize-database data-source="dataSource">
 	    <jdbc:script location="classpath:createtables.sql" />
 	    <jdbc:script location="classpath:insertuser.sql" />
 	    <jdbc:script location="classpath:inserttasklist.sql" />
 	    <jdbc:script location="classpath:insertmultipletasks.sql" />
 	</jdbc:initialize-database>
--->
 
 </beans>
