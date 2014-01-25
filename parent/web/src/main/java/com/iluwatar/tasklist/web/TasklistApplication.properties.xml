@@ -3,7 +3,7 @@
 <properties>
 	<entry key="app.name">Freetasklist.com</entry>
 	<entry key="login.hero.header">Task tracking made easy</entry>
-	<entry key="login.hero.tagline">Shopping list, todo list or any kind of checklist absolutely simple and free</entry>
+	<entry key="login.hero.tagline">Shopping list, todo list or any kind of checklist absolutely simple and free. Works on any device.</entry>
 	<entry key="login.hero.register">Register</entry>
 	<entry key="login.username">Username (email address)</entry>
 	<entry key="login.password">Password</entry>
