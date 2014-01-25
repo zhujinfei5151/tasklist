@@ -12,6 +12,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.request.resource.ResourceReference;
 
 import com.iluwatar.tasklist.web.TasklistConstants;
 import com.iluwatar.tasklist.web.TasklistSession;
@@ -31,6 +33,8 @@ import de.agilecoders.wicket.less.LessResourceReference;
 public class BasePage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
+
+	private ResourceReference brandResourceReference = new PackageResourceReference(this.getClass(), "logo.png");
 	
 	protected IModel<String> titleModel = Model.of("");
 	protected IModel<String> tasklistNameModel = Model.of("");
@@ -54,6 +58,7 @@ public class BasePage extends WebPage {
 		add(navbar);
 		navbar.setPosition(Position.TOP);
 		navbar.brandName(new ResourceModel("app.name"));
+		navbar.setBrandImage(brandResourceReference, Model.of(""));
 		navbar.fluid();
 
 		NavbarButton homeButton = new NavbarButton(DashboardPage.class, new ResourceModel("app.home")) {
