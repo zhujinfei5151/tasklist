@@ -1,11 +1,11 @@
 package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
+import org.apache.wicket.core.request.ClientInfo;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -16,6 +16,9 @@ public class LoginPage extends BasePage {
 
 	public LoginPage(final PageParameters parameters) {
 		super(parameters);
+		
+		// trigger once per session client info gathering here
+		ClientInfo ci = getSession().getClientInfo();
 
 		titleModel.setObject("");
 		

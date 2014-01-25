@@ -1,6 +1,7 @@
 package com.iluwatar.tasklist.web.page;
 
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.WicketRuntimeException;
@@ -8,6 +9,7 @@ import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.core.request.ClientInfo;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.extensions.markup.html.basic.SmartLinkLabel;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -19,6 +21,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.protocol.http.request.WebClientInfo;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValue;
@@ -206,6 +209,17 @@ public class ViewTasklistPage extends BasePage {
 				});
 
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+				
+				ClientInfo clientInfo = getSession().getClientInfo();
+				if (clientInfo instanceof WebClientInfo)
+				{
+					WebClientInfo webClientInfo = (WebClientInfo)clientInfo;
+					TimeZone tz = webClientInfo.getProperties().getTimeZone();
+					if (tz != null) {
+						dt.setTimeZone(tz);
+					}
+				}
+				
 				String desc = "(" + dt.format(item.getModelObject().getDonedate()) + ") " + item.getModelObject().getDescription();
 				Label completedDescription = new SmartLinkLabel("completeddescription", desc);
 				item.add(completedDescription);

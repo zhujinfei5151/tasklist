@@ -92,6 +92,8 @@ public class TasklistApplication extends AuthenticatedWebApplication
 		mountPage("/reorder", ReorderTasklistPage.class);
 		mountPage("/tasklist", ViewTasklistPage.class);
 		
+		getRequestCycleSettings().setGatherExtendedBrowserInfo(true);
+		
 		logger.info("application init complete");
 	}
 	
