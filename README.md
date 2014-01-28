@@ -1,6 +1,5 @@
-tasklist
-========
+Online tasklists web application
 
-tasklist web application
+Deployed at http://freetasklist.com
 
-technology stack: bootstrap, wicket, spring, hibernate, mysql
+Technology stack: bootstrap, wicket, spring, hibernate, mysql
