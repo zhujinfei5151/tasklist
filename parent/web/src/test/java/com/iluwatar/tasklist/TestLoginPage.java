@@ -12,8 +12,6 @@ public class TestLoginPage extends TestBase
 	public void pageRendersSuccessfully()
 	{
 		tester.startPage(LoginPage.class);
-		tester.assertRenderedPage(BrowserInfoPage.class);
-		tester.startPage(LoginPage.class);
 		tester.assertRenderedPage(LoginPage.class);
 	}
 	
