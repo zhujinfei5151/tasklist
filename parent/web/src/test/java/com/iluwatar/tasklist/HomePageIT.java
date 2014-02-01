@@ -13,7 +13,7 @@ public class HomePageIT extends TestCase {
     	
     	WebDriver driver = new FirefoxDriver();
     	driver.get("http://localhost:8080");
-    	assertEquals(driver.getTitle(), "Freetasklist.com");
+    	assertEquals(driver.getTitle(), "Freetasklist.com - free online task list, to-do list, checklist");
     	driver.quit();
         
     }	
