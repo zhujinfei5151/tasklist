@@ -1,13 +1,17 @@
 package com.iluwatar.tasklist.web.page;
 
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.core.request.ClientInfo;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.protocol.http.request.WebClientInfo;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.iluwatar.tasklist.services.entity.Tasklist;
 import com.iluwatar.tasklist.services.service.TaskService;
@@ -20,11 +24,16 @@ public class DashboardPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 
+	final static Logger logger = LoggerFactory.getLogger(TasklistSession.class);
+	
 	@SpringBean
 	TaskService taskService;
 	
 	public DashboardPage() {
 		super();
+		
+		// trigger once per session client info gathering here
+		ClientInfo ci = getSession().getClientInfo();
 		
 		titleModel.setObject(getString("dashboard.header"));
 
