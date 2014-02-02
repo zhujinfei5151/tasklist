@@ -7,7 +7,7 @@ public class UrlParser extends LinkParser {
 
 	/** URL pattern */
 //	private static final String urlPattern = "([a-zA-Z]+://[\\w\\.\\-\\:\\/~]+)[\\w\\.:\\-/?&=%]*";
-	private static final String urlPattern = "([a-zA-Z]+://[\\w\\.\\-\\:\\/~\\+]+)[\\w\\.:\\-/?&=%\\+]*";
+	private static final String urlPattern = "([a-zA-Z]+://[\\w\\.\\-\\/~\\+\\;\\:\\#\\!]+)[\\w\\.:\\-/?&=%\\+\\;\\:\\#\\!]*";
 
 	public static final ILinkRenderStrategy URL_RENDER_STRATEGY = new ILinkRenderStrategy()
 	{
