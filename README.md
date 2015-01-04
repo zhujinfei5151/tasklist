@@ -1,6 +1,6 @@
 #Freetasklist
 
-Online tasklists web application.
+Web application for task management
 
 Deployed at http://freetasklist.com.
 
