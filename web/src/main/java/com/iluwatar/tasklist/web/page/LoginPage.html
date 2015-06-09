@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8" />
+    <title>LoginPage</title>
+</head>
+ 
+<body>
+
+	<wicket:extend>
+
+		<div class="hero-unit">
+			<h1><wicket:message key="login.hero.header"/></h1>
+			<p><wicket:message key="login.hero.tagline"/></p>
+			<p>
+				<wicket:link>
+			    	<a href="RegisterPage.html" class="btn btn-primary btn-large">
+			      		<wicket:message key="login.hero.register"/>
+			    	</a>
+		    	</wicket:link>
+		  	</p>
+		</div>
+
+        <div wicket:id="feedback"/>
+
+		<form wicket:id="loginForm">
+			<div>
+	        	<div><span wicket:id="usernameLabel"/>:</div>
+	        	<input type="text" wicket:id="username" />
+	        </div>
+	        <div>
+	        	<div><span wicket:id="passwordLabel"/>:</div>
+	        	<input type="password" wicket:id="password" />
+	        </div>
+	        <div>
+	        	<input type="submit" wicket:message="value:login.submit" class="btn" />
+	 		</div>
+	    </form>
+    
+    </wicket:extend>
+ 
+</body>
+</html>
