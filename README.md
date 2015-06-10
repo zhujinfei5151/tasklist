@@ -1,5 +1,9 @@
 #Freetasklist
 
+## Build status:
+
+![Build status](https://travis-ci.org/iluwatar/tasklist.svg?branch=master)
+
 Web application for task management.
 
 Deployed at [http://freetasklist.com](http://freetasklist.com). Try it out! Registration is simple and free.
